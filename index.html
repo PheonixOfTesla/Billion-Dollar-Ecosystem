@@ -495,11 +495,72 @@
 
         @media (max-width: 768px) {
             .threat-indicator, .clearance-level, .timestamp-overlay, .encryption-status {
-                font-size: 0.55rem;
-                padding: 0.4rem 0.8rem;
+                font-size: 0.5rem;
+                padding: 0.3rem 0.6rem;
+            }
+            .threat-indicator {
+                top: 10px;
+                left: 10px;
+            }
+            .clearance-level {
+                top: 10px;
+                right: 10px;
+            }
+            .timestamp-overlay {
+                bottom: 10px;
+                left: 10px;
+            }
+            .encryption-status {
+                bottom: 10px;
+                right: 10px;
             }
             .watermark {
-                font-size: 4rem;
+                font-size: 3rem;
+                letter-spacing: 10px;
+            }
+            .container {
+                padding: 1rem;
+            }
+            header {
+                padding: 1.5rem 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+            .subtitle {
+                font-size: 0.75rem;
+                letter-spacing: 2px;
+            }
+            .briefing {
+                padding: 1.5rem;
+            }
+            .briefing > div:first-child {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+                font-size: 0.6rem !important;
+            }
+            .briefing > div:first-child span {
+                text-align: center;
+            }
+            main {
+                padding: 2rem 1rem;
+            }
+            .file-card h3 {
+                font-size: 1.1rem;
+            }
+            .file-card p {
+                font-size: 0.85rem;
+            }
+            .specs-section {
+                padding: 2rem 1.5rem;
+            }
+            .spec-value {
+                font-size: 1.5rem;
+            }
+            .footer-badge {
+                font-size: 0.7rem;
+                padding: 0.75rem 1.5rem;
             }
         }
     </style>
@@ -605,6 +666,12 @@
                         height: 280px;
                     }
                 }
+                @media (max-width: 480px) {
+                    .spinning-video {
+                        width: 220px;
+                        height: 220px;
+                    }
+                }
             </style>
             <div style="margin-bottom: 3rem;">
                 <div style="background: #000000; border: 2px solid #00ffff; clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px)); padding: 2rem; position: relative; text-align: center;">
@@ -647,6 +714,11 @@
                     position: relative;
                     max-width: 600px;
                     margin: 0 auto;
+                }
+                @media (max-width: 768px) {
+                    .chip-video {
+                        max-width: 100%;
+                    }
                 }
             </style>
             <div style="margin-bottom: 3rem;">
@@ -808,6 +880,15 @@
                         }
                         .tactical-image img {
                             height: 200px;
+                        }
+                    }
+                    @media (max-width: 480px) {
+                        .image-grid {
+                            grid-template-columns: 1fr;
+                            gap: 1rem;
+                        }
+                        .tactical-image img {
+                            height: 250px;
                         }
                     }
                 </style>
