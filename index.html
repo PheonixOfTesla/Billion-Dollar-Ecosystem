@@ -1370,18 +1370,117 @@
             }
         });
 
+        // TACTICAL AUDIO SYSTEM - Dynamic multi-layer soundscape
+        let audioEnabled = true;
+        const video = document.getElementById('tacticalVideo');
+        let audioContext;
+        let ambientOscillator;
+        let pulseOscillator;
+
+        // Initialize Web Audio API for tactical ambience
+        function initTacticalAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            // Low frequency ambient hum (simulates tactical equipment)
+            const ambientGain = audioContext.createGain();
+            ambientGain.gain.value = 0.03;
+            ambientOscillator = audioContext.createOscillator();
+            ambientOscillator.type = 'sine';
+            ambientOscillator.frequency.value = 60; // Deep hum
+            ambientOscillator.connect(ambientGain);
+            ambientGain.connect(audioContext.destination);
+            ambientOscillator.start();
+
+            // Random pulse oscillations (simulates scanning/radar)
+            const pulseGain = audioContext.createGain();
+            pulseGain.gain.value = 0.02;
+            pulseOscillator = audioContext.createOscillator();
+            pulseOscillator.type = 'triangle';
+            pulseOscillator.frequency.value = 120;
+            pulseOscillator.connect(pulseGain);
+            pulseGain.connect(audioContext.destination);
+            pulseOscillator.start();
+
+            // Randomize pulse frequency every 2-4 seconds
+            setInterval(() => {
+                if (audioEnabled && pulseOscillator) {
+                    const newFreq = 80 + Math.random() * 100;
+                    pulseOscillator.frequency.setValueAtTime(newFreq, audioContext.currentTime);
+                }
+            }, 2000 + Math.random() * 2000);
+        }
+
+        // Create dynamic loop by jumping to random segments
+        function setupDynamicAudio() {
+            if (!video) return;
+
+            let jumpTimer = 0;
+            const jumpInterval = 4 + Math.random() * 3; // Random 4-7 second intervals
+
+            video.addEventListener('timeupdate', function() {
+                if (!audioEnabled || video.muted) return;
+
+                const duration = video.duration;
+                const currentTime = video.currentTime;
+                jumpTimer += 0.033; // Approximate frame time
+
+                // Jump to random segment every 4-7 seconds for variety
+                if (jumpTimer >= jumpInterval && currentTime > 2) {
+                    const randomStart = Math.random() * Math.max(0, duration - 6);
+                    video.currentTime = randomStart;
+                    jumpTimer = 0;
+                }
+            });
+
+            // Initialize tactical ambient audio
+            if (audioEnabled) {
+                video.addEventListener('play', function() {
+                    if (!ambientOscillator && audioEnabled) {
+                        initTacticalAudio();
+                    }
+                }, { once: true });
+            }
+        }
+
+        // Initialize dynamic audio after video loads
+        video.addEventListener('loadedmetadata', function() {
+            setupDynamicAudio();
+        });
+
         // Audio toggle function
         function toggleAudio() {
-            const video = document.getElementById('tacticalVideo');
             const button = document.getElementById('audioToggle');
 
             if (video.muted) {
                 video.muted = false;
                 video.volume = 0.7;
+                audioEnabled = true;
                 button.innerHTML = '<i class="fas fa-volume-up"></i> AUDIO: ON';
+
+                // Resume tactical ambience
+                if (!ambientOscillator) {
+                    initTacticalAudio();
+                }
             } else {
                 video.muted = true;
+                audioEnabled = false;
                 button.innerHTML = '<i class="fas fa-volume-mute"></i> AUDIO: OFF';
+
+                // Stop tactical ambience
+                if (ambientOscillator) {
+                    ambientOscillator.stop();
+                    ambientOscillator = null;
+                }
+                if (pulseOscillator) {
+                    pulseOscillator.stop();
+                    pulseOscillator = null;
+                }
+                if (audioContext) {
+                    audioContext.close();
+                    audioContext = null;
+                }
             }
         }
     </script>
