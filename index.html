@@ -429,15 +429,40 @@
             <div class="tactical-line"></div>
 
             <!-- TACTICAL VIDEO BRIEFING -->
+            <style>
+                @keyframes spin-video {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+                .spinning-video {
+                    animation: spin-video 20s linear infinite;
+                    border-radius: 50%;
+                    width: 400px;
+                    height: 400px;
+                    object-fit: cover;
+                    border: 3px solid #00ffff;
+                    box-shadow:
+                        0 0 30px rgba(0, 255, 255, 0.5),
+                        0 0 60px rgba(0, 255, 255, 0.3),
+                        inset 0 0 30px rgba(0, 255, 255, 0.2);
+                }
+                @media (max-width: 768px) {
+                    .spinning-video {
+                        width: 280px;
+                        height: 280px;
+                    }
+                }
+            </style>
             <div style="margin-bottom: 3rem;">
-                <div style="background: #000000; border: 2px solid #00ffff; clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px)); padding: 2rem; position: relative;">
+                <div style="background: #000000; border: 2px solid #00ffff; clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px)); padding: 2rem; position: relative; text-align: center;">
                     <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #000; padding: 0 1rem; font-size: 0.8rem; letter-spacing: 2px;">[ TACTICAL VIDEO BRIEFING ]</div>
                     <div style="position: absolute; top: 10px; right: 20px; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.6;">FILE_000</div>
-                    <video controls style="width: 100%; border: 1px solid #00ffff; box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);">
+                    <video autoplay loop muted playsinline class="spinning-video">
                         <source src="./Athletic_Shirt_Tech_Video_Generation.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <div style="margin-top: 1rem; text-align: center; color: #00ffff; font-size: 0.9rem; letter-spacing: 2px; opacity: 0.8;">ATHLETIC SHIRT TECH GENERATION PROTOCOL</div>
+                    <div style="margin-top: 1.5rem; text-align: center; color: #00ffff; font-size: 0.9rem; letter-spacing: 2px; opacity: 0.8;">ATHLETIC SHIRT TECH GENERATION PROTOCOL</div>
+                    <div style="margin-top: 0.5rem; text-align: center; color: #ffffff; font-size: 0.7rem; letter-spacing: 1px; opacity: 0.5;">CONTINUOUS SURVEILLANCE MODE // ACTIVE</div>
                 </div>
             </div>
 
