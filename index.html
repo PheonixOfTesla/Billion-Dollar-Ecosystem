@@ -14,8 +14,8 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #164e63 0%, #06b6d4 50%, #083344 100%);
-            color: #fff;
+            background: #000000;
+            color: #ffffff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -24,21 +24,21 @@
         header {
             padding: 3rem 2rem;
             text-align: center;
-            background: rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+            background: #0a0a0a;
+            border-bottom: 1px solid #00ffff;
         }
 
         h1 {
             font-size: 3.5rem;
             margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-            color: #06b6d4;
+            text-shadow: 0 0 20px #00ffff;
+            color: #00ffff;
         }
 
         .subtitle {
             font-size: 1.3rem;
             opacity: 0.9;
-            color: #67e8f9;
+            color: #00d9ff;
         }
 
         main {
@@ -59,7 +59,7 @@
             font-size: 1.15rem;
             line-height: 1.8;
             opacity: 0.95;
-            color: #cffafe;
+            color: #ffffff;
         }
 
         .files-grid {
@@ -70,12 +70,11 @@
         }
 
         .file-card {
-            background: rgba(8, 51, 68, 0.6);
-            backdrop-filter: blur(10px);
+            background: #0a0a0a;
             border-radius: 16px;
             padding: 2rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(6, 182, 212, 0.3);
+            border: 1px solid #00ffff;
             position: relative;
             overflow: hidden;
         }
@@ -87,7 +86,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #06b6d4, #0891b2);
+            background: #00ffff;
             transform: scaleX(0);
             transition: transform 0.3s;
         }
@@ -98,28 +97,29 @@
 
         .file-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.3);
-            border-color: #06b6d4;
-            background: rgba(8, 51, 68, 0.8);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+            border-color: #00ffff;
+            background: #111111;
         }
 
         .file-card.featured {
             grid-column: 1 / -1;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(8, 145, 178, 0.3));
-            border: 2px solid rgba(6, 182, 212, 0.5);
+            background: #0a0a0a;
+            border: 2px solid #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
         }
 
         .card-icon {
             width: 48px;
             height: 48px;
             margin-bottom: 1rem;
-            color: #06b6d4;
+            color: #00ffff;
         }
 
         .file-card h3 {
             margin-bottom: 0.75rem;
             font-size: 1.5rem;
-            color: #cffafe;
+            color: #00ffff;
             display: flex;
             align-items: center;
             gap: 0.75rem;
@@ -133,7 +133,7 @@
             opacity: 0.85;
             margin-bottom: 1.5rem;
             line-height: 1.7;
-            color: #a5f3fc;
+            color: #ffffff;
         }
 
         .file-card a {
@@ -141,34 +141,35 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem 1.5rem;
-            background: rgba(6, 182, 212, 0.2);
-            border: 1px solid #06b6d4;
+            background: transparent;
+            border: 1px solid #00ffff;
             border-radius: 8px;
-            color: #cffafe;
+            color: #00ffff;
             text-decoration: none;
             transition: all 0.3s;
             font-weight: 500;
         }
 
         .file-card a:hover {
-            background: #06b6d4;
-            color: #083344;
+            background: #00ffff;
+            color: #000000;
             transform: translateX(4px);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
         }
 
         .specs-section {
             max-width: 900px;
             margin: 4rem auto 0;
             padding: 2.5rem;
-            background: rgba(8, 51, 68, 0.6);
+            background: #0a0a0a;
             border-radius: 16px;
-            border: 1px solid rgba(6, 182, 212, 0.3);
+            border: 1px solid #00ffff;
         }
 
         .specs-section h3 {
             margin: 0 0 2rem;
             font-size: 1.8rem;
-            color: #06b6d4;
+            color: #00ffff;
             display: flex;
             align-items: center;
             gap: 0.75rem;
@@ -183,40 +184,40 @@
 
         .spec-item {
             padding: 1.5rem;
-            background: rgba(6, 182, 212, 0.1);
+            background: #111111;
             border-radius: 12px;
-            border-left: 3px solid #06b6d4;
+            border-left: 3px solid #00ffff;
         }
 
         .spec-label {
             opacity: 0.7;
             font-size: 0.9rem;
-            color: #a5f3fc;
+            color: #00d9ff;
             margin-bottom: 0.5rem;
         }
 
         .spec-value {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #cffafe;
+            color: #ffffff;
         }
 
         footer {
             text-align: center;
             padding: 2rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-top: 1px solid rgba(6, 182, 212, 0.3);
+            background: #0a0a0a;
+            border-top: 1px solid #00ffff;
         }
 
         .phoenix-badge {
             display: inline-block;
             padding: 0.75rem 1.5rem;
-            background: rgba(6, 182, 212, 0.2);
-            border: 1px solid rgba(6, 182, 212, 0.4);
+            background: transparent;
+            border: 1px solid #00ffff;
             border-radius: 25px;
             margin-top: 1rem;
             font-size: 0.95rem;
-            color: #a5f3fc;
+            color: #00ffff;
         }
     </style>
 </head>
@@ -313,7 +314,7 @@
     </main>
 
     <footer>
-        <p style="color: #a5f3fc;">Part of the Phoenix Ecosystem</p>
+        <p style="color: #00d9ff;">Part of the Phoenix Ecosystem</p>
         <div class="phoenix-badge">Mirroring Life Through Technology</div>
     </footer>
 </body>

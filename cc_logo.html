@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CC Logo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <svg viewBox="0 0 400 200" width="800" height="400">
+    <defs>
+      <linearGradient id="ccGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00f0ff"/>
+        <stop offset="50%" stop-color="#0088ff"/>
+        <stop offset="100%" stop-color="#00f0ff"/>
+      </linearGradient>
+      
+      <!-- Neon glow filter -->
+      <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="8" result="blur1"/>
+        <feGaussianBlur stdDeviation="16" result="blur2"/>
+        <feGaussianBlur stdDeviation="24" result="blur3"/>
+        <feMerge>
+          <feMergeNode in="blur3"/>
+          <feMergeNode in="blur2"/>
+          <feMergeNode in="blur1"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      
+      <filter id="ovalGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="6" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+    
+    <!-- Background -->
+    <rect width="400" height="200" fill="#000"/>
+    
+    <!-- Horizontal oval - outer glow -->
+    <ellipse cx="200" cy="100" rx="160" ry="70" fill="none" stroke="#00f0ff" stroke-width="3" filter="url(#ovalGlow)" opacity="0.9"/>
+    
+    <!-- CC Text with neon glow -->
+    <text x="200" y="120" text-anchor="middle" font-family="Orbitron, sans-serif" font-size="72" font-weight="900" fill="url(#ccGrad)" filter="url(#neonGlow)">CC</text>
+  </svg>
+</body>
+</html>
