@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assembly Guide - Conscious Clothes</title>
+    <title>Assembly Protocol // CONSCIOUS CLOTHES</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,44 +14,101 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
-            color: #ffffff;
+            font-family: 'Orbitron', monospace;
+            background: #000000;
+            color: #00ffff;
             min-height: 100vh;
-            padding: 2rem;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scan lines effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 255, 0.03) 0px,
+                rgba(0, 255, 255, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 1000;
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Grid overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 999;
         }
 
         .container {
-            max-width: 1200px;
+            position: relative;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         header {
-            background: #0a0a0a;
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            padding: 3rem 2rem;
+            padding: 2rem;
             text-align: center;
+            position: relative;
+            border-bottom: 2px solid #00ffff;
+            background: linear-gradient(180deg, rgba(0, 255, 255, 0.1) 0%, transparent 100%);
             margin-bottom: 2rem;
         }
 
         h1 {
             font-size: 2.5rem;
-            color: #00ffff;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
             margin-bottom: 0.5rem;
+            animation: flicker 3s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
         }
 
         .subtitle {
-            font-size: 1.2rem;
-            color: #00d9ff;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: #00ffff;
+            opacity: 0.8;
+            text-transform: uppercase;
         }
 
-        .tagline {
-            font-size: 1rem;
-            color: #00d9ff;
-            font-style: italic;
-            margin-top: 0.5rem;
+        .file-id {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            opacity: 0.6;
         }
 
         .nav {
@@ -58,6 +116,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem;
+            background: rgba(0, 255, 255, 0.02);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
         }
 
         .nav a {
@@ -66,185 +128,297 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border: 1px solid #00ffff;
+            clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+            transition: all 0.3s;
         }
 
         .nav a:hover {
-            color: #00d9ff;
-        }
-
-        .download-btn {
-            background: rgba(0, 255, 255, 0.3);
-            border: 1px solid #00ffff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 500;
-        }
-
-        .download-btn:hover {
             background: #00ffff;
-            color: #0a0a0a;
+            color: #000000;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
         }
 
         .section {
-            background: #0a0a0a;
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            border: 1px solid rgba(0, 255, 255, 0.3);
+            background: #000000;
+            border: 2px solid #00ffff;
+            clip-path: polygon(0 0, calc(100% - 25px) 0, 100% 25px, 100% 100%, 25px 100%, 0 calc(100% - 25px));
             padding: 2rem;
             margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            border-top: 2px solid #00ffff;
+            border-right: 2px solid #00ffff;
         }
 
         h2 {
             color: #00ffff;
             margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px #00ffff;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
         }
 
         h3 {
-            color: #00d9ff;
+            color: #ffffff;
             margin: 1.5rem 0 1rem;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
         }
 
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
         .tool-card {
-            background: rgba(0, 255, 255, 0.3);
-            padding: 1rem;
-            border-radius: 8px;
+            background: rgba(0, 255, 255, 0.05);
+            padding: 1.5rem;
             border-left: 3px solid #00ffff;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+            transition: all 0.3s;
+        }
+
+        .tool-card:hover {
+            background: rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
         }
 
         .tool-card strong {
             color: #00ffff;
             display: block;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .tool-card p {
+            color: #ffffff;
+            font-size: 0.85rem;
+            opacity: 0.8;
         }
 
         .step {
-            background: rgba(0, 255, 255, 0.3);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid #00ffff;
+            background: rgba(0, 255, 255, 0.02);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #00ffff;
+            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+            position: relative;
         }
 
-        .step-number {
-            background: #00ffff;
-            color: #0a0a0a;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-right: 1rem;
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 25px;
+            height: 25px;
+            border-top: 2px solid #00ffff;
+            border-left: 2px solid #00ffff;
         }
 
         .step-header {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .step-number {
+            background: #00ffff;
+            color: #000000;
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+            text-shadow: none;
         }
 
         .step-title {
             color: #00ffff;
             font-size: 1.3rem;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #00ffff;
         }
 
         ul {
             margin: 1rem 0 1rem 2rem;
-            line-height: 1.8;
+            line-height: 2;
+            color: #ffffff;
+        }
+
+        ul li {
+            margin-bottom: 0.75rem;
         }
 
         .note {
-            background: rgba(234, 179, 8, 0.1);
-            border-left: 3px solid #eab308;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-            color: #fef3c7;
+            background: rgba(0, 255, 255, 0.05);
+            border-left: 3px solid #00ffff;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+        }
+
+        .note strong {
+            color: #00ffff;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .tactical-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .tactical-line::before,
+        .tactical-line::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #00ffff;
+            top: -4px;
+        }
+
+        .tactical-line::before { left: 0; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+        .tactical-line::after { right: 0; clip-path: polygon(0 0, 100% 0, 0 100%); }
+
+        /* Corner accents */
+        .corner-accent {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            border: 2px solid #00ffff;
+            opacity: 0.3;
+            z-index: 5;
+        }
+
+        .corner-accent.tl {
+            top: 0;
+            left: 0;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .corner-accent.tr {
+            top: 0;
+            right: 0;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .corner-accent.bl {
+            bottom: 0;
+            left: 0;
+            border-right: none;
+            border-top: none;
+        }
+
+        .corner-accent.br {
+            bottom: 0;
+            right: 0;
+            border-left: none;
+            border-top: none;
         }
     </style>
 </head>
 <body>
+    <div class="corner-accent tl"></div>
+    <div class="corner-accent tr"></div>
+    <div class="corner-accent bl"></div>
+    <div class="corner-accent br"></div>
+
     <div class="container">
+        <header>
+            <span class="file-id">FILE_002</span>
+            <h1>ASSEMBLY PROTOCOL</h1>
+            <p class="subtitle">// CONSCIOUS CLOTHES TACTICAL SYSTEM //</p>
+        </header>
+
         <nav class="nav">
             <a href="./index.html">
                 <i class="fas fa-arrow-left"></i>
-                Back to Home
+                RETURN TO BASE
             </a>
-            <a href="./conscious_clothes_assembly_guide.jsx" download class="download-btn">
-                <i class="fas fa-download"></i>
-                Download Full Guide (JSX)
-            </a>
+            <span style="opacity: 0.6; font-size: 0.8rem; letter-spacing: 2px;">IF YOU CAN FOLLOW LEGO INSTRUCTIONS, YOU CAN BUILD THIS</span>
         </nav>
 
-        <header>
-            <h1><i class="fas fa-screwdriver-wrench"></i> Assembly Guide</h1>
-            <p class="subtitle">Conscious Clothes Smart Garment System</p>
-            <p class="tagline">If you can follow LEGO instructions, you can build this</p>
-        </header>
-
         <div class="section">
-            <h2><i class="fas fa-toolbox"></i> Tools You'll Need</h2>
+            <h2><i class="fas fa-toolbox"></i> REQUIRED TOOLS</h2>
             <div class="tools-grid">
                 <div class="tool-card">
-                    <strong>Soldering Iron</strong>
-                    <p style="color: #00d9ff; font-size: 0.9rem;">Fine tip, temperature controlled</p>
+                    <strong>SOLDERING IRON</strong>
+                    <p>Fine tip, temperature controlled</p>
                 </div>
                 <div class="tool-card">
-                    <strong>Multimeter</strong>
-                    <p style="color: #00d9ff; font-size: 0.9rem;">For testing connections</p>
+                    <strong>MULTIMETER</strong>
+                    <p>For testing connections</p>
                 </div>
                 <div class="tool-card">
-                    <strong>Tweezers</strong>
-                    <p style="color: #00d9ff; font-size: 0.9rem;">For tiny SMD components</p>
+                    <strong>TWEEZERS</strong>
+                    <p>For tiny SMD components</p>
                 </div>
                 <div class="tool-card">
-                    <strong>Wire Strippers</strong>
-                    <p style="color: #00d9ff; font-size: 0.9rem;">28-30 AWG size</p>
+                    <strong>WIRE STRIPPERS</strong>
+                    <p>28-30 AWG size</p>
                 </div>
                 <div class="tool-card">
-                    <strong>Helping Hands</strong>
-                    <p style="color: #00d9ff; font-size: 0.9rem;">Holds boards steady</p>
+                    <strong>HELPING HANDS</strong>
+                    <p>Holds boards steady</p>
                 </div>
                 <div class="tool-card">
-                    <strong>Sewing Needle</strong>
-                    <p style="color: #00d9ff; font-size: 0.9rem;">Large eye for conductive thread</p>
+                    <strong>SEWING NEEDLE</strong>
+                    <p>Large eye for conductive thread</p>
                 </div>
                 <div class="tool-card">
-                    <strong>Hot Glue Gun</strong>
-                    <p style="color: #00d9ff; font-size: 0.9rem;">For strain relief</p>
+                    <strong>HOT GLUE GUN</strong>
+                    <p>For strain relief</p>
                 </div>
                 <div class="tool-card">
-                    <strong>Computer + USB</strong>
-                    <p style="color: #00d9ff; font-size: 0.9rem;">For programming firmware</p>
+                    <strong>COMPUTER + USB</strong>
+                    <p>For programming firmware</p>
                 </div>
             </div>
         </div>
 
+        <div class="tactical-line"></div>
+
         <div class="section">
-            <h2><i class="fas fa-list-check"></i> Assembly Steps</h2>
+            <h2><i class="fas fa-list-check"></i> ASSEMBLY SEQUENCE</h2>
 
             <div class="step">
                 <div class="step-header">
                     <span class="step-number">1</span>
-                    <span class="step-title">Build the Power System</span>
+                    <span class="step-title">BUILD POWER SYSTEM</span>
                 </div>
-                <p style="color: #00d9ff; margin-bottom: 1rem;">Do this first! Everything needs power.</p>
+                <p style="color: #00ffff; margin-bottom: 1rem; opacity: 0.9;">DO THIS FIRST! EVERYTHING NEEDS POWER.</p>
                 <ul>
                     <li>Connect USB-C connector (J1) for 5V input</li>
                     <li>Wire BQ24075 battery charger IC with 10kΩ resistors on ISET and TS pins</li>
@@ -257,7 +431,7 @@
             <div class="step">
                 <div class="step-header">
                     <span class="step-number">2</span>
-                    <span class="step-title">Assemble the Main PCB</span>
+                    <span class="step-title">ASSEMBLE MAIN PCB</span>
                 </div>
                 <ul>
                     <li>Solder STM32F405RGT6 microcontroller (64-pin LQFP) - use flux!</li>
@@ -271,7 +445,7 @@
             <div class="step">
                 <div class="step-header">
                     <span class="step-number">3</span>
-                    <span class="step-title">Install Sensor Modules</span>
+                    <span class="step-title">INSTALL SENSOR MODULES</span>
                 </div>
                 <ul>
                     <li><strong>AD8232 ECG:</strong> Mount module, connect 3 electrode leads</li>
@@ -285,7 +459,7 @@
             <div class="step">
                 <div class="step-header">
                     <span class="step-number">4</span>
-                    <span class="step-title">Wire I2C and SPI Buses</span>
+                    <span class="step-title">WIRE I2C AND SPI BUSES</span>
                 </div>
                 <ul>
                     <li>Add 10kΩ pullup resistors to SDA (PA6) and SCL (PA5)</li>
@@ -294,15 +468,15 @@
                     <li>Double-check all connections with schematic</li>
                 </ul>
                 <div class="note">
-                    <strong><i class="fas fa-info-circle"></i> Critical:</strong> Both MAX30102 sensors share address 0x57,
-                    so second sensor MUST go through TCA9548A multiplexer!
+                    <strong><i class="fas fa-triangle-exclamation"></i> CRITICAL</strong>
+                    <p>Both MAX30102 sensors share address 0x57, so second sensor MUST go through TCA9548A multiplexer!</p>
                 </div>
             </div>
 
             <div class="step">
                 <div class="step-header">
                     <span class="step-number">5</span>
-                    <span class="step-title">Integrate into Garment</span>
+                    <span class="step-title">INTEGRATE INTO GARMENT</span>
                 </div>
                 <ul>
                     <li>Sew conductive thread pathways on compression shirt base</li>
@@ -318,7 +492,7 @@
             <div class="step">
                 <div class="step-header">
                     <span class="step-number">6</span>
-                    <span class="step-title">Program & Test</span>
+                    <span class="step-title">PROGRAM & TEST</span>
                 </div>
                 <ul>
                     <li>Flash STM32 firmware via USB using ST-Link programmer</li>
@@ -331,23 +505,17 @@
             </div>
         </div>
 
-        <div class="section">
-            <h2><i class="fas fa-triangle-exclamation"></i> Safety & Tips</h2>
-            <ul>
-                <li><strong>ESD Protection:</strong> Use anti-static wrist strap when handling electronics</li>
-                <li><strong>Soldering:</strong> Work in ventilated area, use lead-free solder</li>
-                <li><strong>Testing:</strong> Never power on until all connections verified</li>
-                <li><strong>Washing:</strong> Remove electronics module before washing garment</li>
-                <li><strong>Battery:</strong> Never puncture or short-circuit LiPo battery</li>
-            </ul>
+        <div class="tactical-line"></div>
 
-            <div class="note" style="margin-top: 1.5rem;">
-                <strong><i class="fas fa-download"></i> Complete Guide Available</strong>
-                <p style="margin-top: 0.5rem;">
-                    This is an overview. Download the full React component (JSX) above for detailed diagrams,
-                    SVG schematics, and step-by-step visual instructions with checkboxes.
-                </p>
-            </div>
+        <div class="section">
+            <h2><i class="fas fa-shield-halved"></i> SAFETY & OPERATIONAL NOTES</h2>
+            <ul>
+                <li><strong>ESD PROTECTION:</strong> Use anti-static wrist strap when handling electronics</li>
+                <li><strong>SOLDERING:</strong> Work in ventilated area, use lead-free solder</li>
+                <li><strong>TESTING:</strong> Never power on until all connections verified</li>
+                <li><strong>WASHING:</strong> Remove electronics module before washing garment</li>
+                <li><strong>BATTERY:</strong> Never puncture or short-circuit LiPo battery</li>
+            </ul>
         </div>
     </div>
 </body>

@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phoenix iOS Build Report</title>
+    <title>Phoenix iOS Build Report // TACTICAL SYSTEMS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,46 +14,117 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
-            color: #ffffff;
+            font-family: 'Orbitron', monospace;
+            background: #000000;
+            color: #00ffff;
             min-height: 100vh;
-            padding: 2rem;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scan lines effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 255, 0.03) 0px,
+                rgba(0, 255, 255, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 1000;
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Grid overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 999;
         }
 
         .container {
-            max-width: 1000px;
+            position: relative;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 1400px;
             margin: 0 auto;
-            background: #0a0a0a;
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            overflow: hidden;
         }
 
         header {
-            padding: 3rem 2rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 2rem;
             text-align: center;
+            position: relative;
+            border-bottom: 2px solid #00ffff;
+            background: linear-gradient(180deg, rgba(0, 255, 255, 0.1) 0%, transparent 100%);
+            margin-bottom: 2rem;
         }
 
         h1 {
             font-size: 2.5rem;
-            color: #00ffff;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
             margin-bottom: 0.5rem;
+            animation: flicker 3s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
         }
 
         .subtitle {
-            font-size: 1.1rem;
-            color: #00d9ff;
-            font-style: italic;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: #00ffff;
+            opacity: 0.8;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .metadata {
+            font-size: 0.75rem;
+            color: #ffffff;
+            opacity: 0.6;
+            letter-spacing: 1px;
+        }
+
+        .file-id {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            opacity: 0.6;
         }
 
         .nav {
-            padding: 1rem 2rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(0, 255, 255, 0.02);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
         }
 
         .nav a {
@@ -61,46 +133,79 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border: 1px solid #00ffff;
+            clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+            transition: all 0.3s;
         }
 
         .nav a:hover {
-            color: #00d9ff;
+            background: #00ffff;
+            color: #000000;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
         }
 
-        .content {
-            padding: 3rem 2rem;
+        .status-banner {
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);
         }
 
-        .badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(34, 197, 94, 0.2);
-            border: 1px solid #22c55e;
-            color: #86efac;
-            border-radius: 20px;
-            font-weight: 500;
-            margin: 1rem 0;
+        .status-banner h2 {
+            color: #00ff00;
+            font-size: 2rem;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px #00ff00;
+        }
+
+        .section {
+            background: #000000;
+            border: 2px solid #00ffff;
+            clip-path: polygon(0 0, calc(100% - 25px) 0, 100% 25px, 100% 100%, 25px 100%, 0 calc(100% - 25px));
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            border-top: 2px solid #00ffff;
+            border-right: 2px solid #00ffff;
         }
 
         h2 {
             color: #00ffff;
-            font-size: 1.8rem;
-            margin: 2rem 0 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px #00ffff;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
         }
 
         h3 {
-            color: #00d9ff;
-            font-size: 1.3rem;
-            margin: 1.5rem 0 0.75rem;
+            color: #ffffff;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
         }
 
         table {
             width: 100%;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
             border-collapse: collapse;
+            background: rgba(0, 255, 255, 0.02);
         }
 
         table th,
@@ -111,85 +216,161 @@
         }
 
         table th {
-            background: rgba(0, 255, 255, 0.3);
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        table td {
+            color: #ffffff;
+        }
+
+        table td:first-child {
             color: #00ffff;
             font-weight: 600;
         }
 
-        table td:first-child {
-            font-weight: 500;
-            color: #00d9ff;
-        }
-
-        .code-block {
-            background: rgba(0, 0, 0, 0.4);
-            border-left: 3px solid #00ffff;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            font-family: 'Courier New', monospace;
-            color: #22c55e;
-        }
-
         .success {
-            color: #86efac;
+            color: #00ff00;
         }
 
         .warning {
-            color: #fbbf24;
+            color: #ffff00;
+        }
+
+        .code-block {
+            background: rgba(0, 255, 255, 0.05);
+            border-left: 3px solid #00ffff;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            font-size: 0.9rem;
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
         }
 
         ul, ol {
             margin: 1rem 0 1rem 2rem;
-            line-height: 1.8;
+            line-height: 2;
+            color: #ffffff;
         }
 
-        li {
-            margin: 0.5rem 0;
+        .tactical-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            margin: 2rem 0;
+            position: relative;
         }
 
-        .metadata {
-            font-size: 0.9rem;
-            color: #00d9ff;
-            margin-bottom: 1rem;
+        .tactical-line::before,
+        .tactical-line::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #00ffff;
+            top: -4px;
         }
+
+        .tactical-line::before { left: 0; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+        .tactical-line::after { right: 0; clip-path: polygon(0 0, 100% 0, 0 100%); }
 
         .footer-section {
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 255, 255, 0.02);
             padding: 2rem;
             margin-top: 3rem;
-            border-top: 1px solid rgba(0, 255, 255, 0.3);
+            border-top: 2px solid #00ffff;
             text-align: center;
-            color: #00d9ff;
-            font-style: italic;
+            clip-path: polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);
+        }
+
+        .footer-section h3 {
+            color: #00ffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .footer-section p {
+            color: #ffffff;
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        /* Corner accents */
+        .corner-accent {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            border: 2px solid #00ffff;
+            opacity: 0.3;
+            z-index: 5;
+        }
+
+        .corner-accent.tl {
+            top: 0;
+            left: 0;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .corner-accent.tr {
+            top: 0;
+            right: 0;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .corner-accent.bl {
+            bottom: 0;
+            left: 0;
+            border-right: none;
+            border-top: none;
+        }
+
+        .corner-accent.br {
+            bottom: 0;
+            right: 0;
+            border-left: none;
+            border-top: none;
         }
     </style>
 </head>
 <body>
+    <div class="corner-accent tl"></div>
+    <div class="corner-accent tr"></div>
+    <div class="corner-accent bl"></div>
+    <div class="corner-accent br"></div>
+
     <div class="container">
         <header>
-            <h1><i class="fab fa-apple"></i> Phoenix iOS Build Report</h1>
-            <p class="subtitle">Apple meets Da Vinci x Steve Jobs</p>
+            <span class="file-id">FILE_005</span>
+            <h1>PHOENIX iOS BUILD REPORT</h1>
+            <p class="subtitle">// APPLE MEETS DA VINCI X STEVE JOBS //</p>
             <div class="metadata">
-                Generated: December 9, 2025 02:01 AM PST<br>
-                Build System: Xcode 26.1.0 (17B54) | Architecture: Release / arm64
+                GENERATED: DECEMBER 9, 2025 02:01 AM PST<br>
+                BUILD SYSTEM: XCODE 26.1.0 (17B54) | ARCHITECTURE: RELEASE / ARM64
             </div>
         </header>
 
         <nav class="nav">
             <a href="./index.html">
                 <i class="fas fa-arrow-left"></i>
-                Back to Home
+                RETURN TO BASE
             </a>
         </nav>
 
-        <div class="content">
-            <h2><i class="fas fa-check-circle success"></i> BUILD STATUS</h2>
-            <div class="code-block">** ARCHIVE SUCCEEDED **</div>
+        <div class="status-banner">
+            <h2><i class="fas fa-check-circle"></i> ARCHIVE SUCCEEDED</h2>
+        </div>
 
-            <h2><i class="fas fa-box"></i> Archive Details</h2>
+        <div class="section">
+            <h2><i class="fas fa-box"></i> ARCHIVE DETAILS</h2>
             <table>
-                <tr><th>Property</th><th>Value</th></tr>
+                <tr><th>PROPERTY</th><th>VALUE</th></tr>
                 <tr><td>Location</td><td>/Users/pheonix/Desktop/Phoenix.xcarchive</td></tr>
                 <tr><td>Archive Size</td><td>98 MB</td></tr>
                 <tr><td>App Bundle Size</td><td>22 MB</td></tr>
@@ -199,26 +380,30 @@
                 <tr><td>Scheme</td><td>App</td></tr>
                 <tr><td>Configuration</td><td>Release</td></tr>
             </table>
+        </div>
 
-            <h2><i class="fas fa-shield-halved"></i> Security Audit (OMEGA Verification)</h2>
+        <div class="tactical-line"></div>
 
-            <h3><span class="success">✓</span> HTTP/HTTPS Enforcement</h3>
+        <div class="section">
+            <h2><i class="fas fa-shield-halved"></i> SECURITY AUDIT (OMEGA VERIFICATION)</h2>
+
+            <h3><span class="success">✓</span> HTTP/HTTPS ENFORCEMENT</h3>
             <p><strong class="success">PASS</strong> - Only 1 HTTP reference found (WebSocket URL conversion - safe)</p>
 
-            <h3><span class="warning">⚠</span> Console Logging</h3>
+            <h3><span class="warning">⚠</span> CONSOLE LOGGING</h3>
             <p><strong class="warning">ACCEPTABLE</strong> - 1,056 console statements found</p>
             <ul>
                 <li>Many behind DEBUG_MODE flags</li>
                 <li>Acceptable for production monitoring</li>
             </ul>
 
-            <h3><span class="success">✓</span> Secrets Exposure</h3>
+            <h3><span class="success">✓</span> SECRETS EXPOSURE</h3>
             <p><strong class="success">PASS</strong> - No hardcoded API keys or secrets</p>
             <ul>
                 <li>Only form labels found ("PASSWORD", "CONFIRM PASSWORD")</li>
             </ul>
 
-            <h3><span class="success">✓</span> iOS Security Configuration</h3>
+            <h3><span class="success">✓</span> iOS SECURITY CONFIGURATION</h3>
             <p><strong class="success">PASS</strong> - NSAppTransportSecurity properly configured</p>
             <ul>
                 <li>NSAllowsArbitraryLoads: false (requires HTTPS)</li>
@@ -226,30 +411,38 @@
                 <li>NSExceptionAllowsInsecureHTTPLoads: false</li>
             </ul>
 
-            <h3><span class="success">✓</span> App Assets</h3>
+            <h3><span class="success">✓</span> APP ASSETS</h3>
             <p><strong class="success">PASS</strong> - App icon present (108KB AppIcon-512@2x.png)</p>
+        </div>
 
-            <h2><i class="fas fa-clock"></i> Build Timeline</h2>
+        <div class="tactical-line"></div>
+
+        <div class="section">
+            <h2><i class="fas fa-clock"></i> BUILD TIMELINE</h2>
             <table>
-                <tr><th>Phase</th><th>Duration</th><th>Status</th></tr>
+                <tr><th>PHASE</th><th>DURATION</th><th>STATUS</th></tr>
                 <tr><td>Version Increment</td><td>&lt;1s</td><td class="success">✓</td></tr>
                 <tr><td>Clean Build</td><td>~3s</td><td class="success">✓</td></tr>
                 <tr><td>Archive Build</td><td>~54s</td><td class="success">✓</td></tr>
                 <tr><td>Verification</td><td>&lt;1s</td><td class="success">✓</td></tr>
-                <tr><td><strong>Total</strong></td><td><strong>~58s</strong></td><td class="success"><strong>✓</strong></td></tr>
+                <tr><td><strong>TOTAL</strong></td><td><strong>~58s</strong></td><td class="success"><strong>✓</strong></td></tr>
             </table>
+        </div>
 
-            <h2><i class="fas fa-cog"></i> Technical Details</h2>
+        <div class="tactical-line"></div>
 
-            <h3>Build Configuration</h3>
+        <div class="section">
+            <h2><i class="fas fa-cog"></i> TECHNICAL DETAILS</h2>
+
+            <h3>BUILD CONFIGURATION</h3>
             <ul>
-                <li><strong>Code Signing:</strong> Disabled (for distribution)</li>
-                <li><strong>Bitcode:</strong> Default</li>
-                <li><strong>Optimization:</strong> Release (-O)</li>
-                <li><strong>Debug Symbols:</strong> Included (35 dSYMs, 76MB)</li>
+                <li><strong>CODE SIGNING:</strong> Disabled (for distribution)</li>
+                <li><strong>BITCODE:</strong> Default</li>
+                <li><strong>OPTIMIZATION:</strong> Release (-O)</li>
+                <li><strong>DEBUG SYMBOLS:</strong> Included (35 dSYMs, 76MB)</li>
             </ul>
 
-            <h3>Capacitor Plugins</h3>
+            <h3>CAPACITOR PLUGINS</h3>
             <ul>
                 <li>@capacitor-community/contacts</li>
                 <li>@capacitor-community/speech-recognition</li>
@@ -258,17 +451,17 @@
                 <li>GoogleMaps SDK</li>
             </ul>
 
-            <h3>Warnings</h3>
+            <h3>WARNINGS</h3>
             <p>1 warning (cosmetic):</p>
-            <div class="code-block">
-extension String: Error {}<br>
-^<br>
-note: add '@retroactive' to silence this warning
-            </div>
+            <div class="code-block">extension String: Error {}<br>^<br>note: add '@retroactive' to silence this warning</div>
+        </div>
 
-            <h2><i class="fas fa-rocket"></i> Next Steps</h2>
+        <div class="tactical-line"></div>
 
-            <h3>For App Store Submission:</h3>
+        <div class="section">
+            <h2><i class="fas fa-rocket"></i> NEXT STEPS</h2>
+
+            <h3>FOR APP STORE SUBMISSION:</h3>
             <ol>
                 <li>Open Xcode</li>
                 <li>Window → Organizer</li>
@@ -279,43 +472,30 @@ note: add '@retroactive' to silence this warning
                 <li>Upload to App Store Connect</li>
             </ol>
 
-            <h3>For TestFlight:</h3>
+            <h3>FOR TESTFLIGHT:</h3>
             <ul>
                 <li>Archive is TestFlight-ready after code signing</li>
                 <li>No additional configuration needed</li>
             </ul>
 
-            <h2><i class="fas fa-folder-tree"></i> File Structure</h2>
-            <div class="code-block">
-Phoenix.xcarchive/<br>
-├── Info.plist (841B)<br>
-├── dSYMs/ (76MB, 35 files)<br>
-│   └── [Debug symbols for crash reporting]<br>
-└── Products/<br>
-    └── Applications/<br>
-        └── App.app/ (22MB)<br>
-            ├── Info.plist<br>
-            ├── public/ (web assets)<br>
-            ├── Assets.car<br>
-            ├── Frameworks/<br>
-            └── [Capacitor runtime]
-            </div>
+            <h3>FILE STRUCTURE</h3>
+            <div class="code-block">Phoenix.xcarchive/<br>├── Info.plist (841B)<br>├── dSYMs/ (76MB, 35 files)<br>│   └── [Debug symbols for crash reporting]<br>└── Products/<br>    └── Applications/<br>        └── App.app/ (22MB)<br>            ├── Info.plist<br>            ├── public/ (web assets)<br>            ├── Assets.car<br>            ├── Frameworks/<br>            └── [Capacitor runtime]</div>
+        </div>
 
-            <div class="footer-section">
-                <h3>Genesis Notes</h3>
-                <p><strong>Philosophy:</strong> Simplicity through perfection</p>
-                <p><strong>Approach:</strong> Zero-defect OMEGA standard</p>
-                <p><strong>Result:</strong> Production-ready iOS archive</p>
-                <p style="margin-top: 1rem;">
-                    The build succeeded on the third attempt after path resolution.<br>
-                    All OMEGA security checks passed.<br>
-                    Archive is ready for code signing and App Store submission.
-                </p>
-                <p style="margin-top: 2rem; font-weight: 600;">
-                    Build completed autonomously by Genesis<br>
-                    <em>Phoenix AI Consciousness v1.0 Build 2</em>
-                </p>
-            </div>
+        <div class="footer-section">
+            <h3>GENESIS NOTES</h3>
+            <p><strong>PHILOSOPHY:</strong> Simplicity through perfection</p>
+            <p><strong>APPROACH:</strong> Zero-defect OMEGA standard</p>
+            <p><strong>RESULT:</strong> Production-ready iOS archive</p>
+            <p style="margin-top: 1rem;">
+                The build succeeded on the third attempt after path resolution.<br>
+                All OMEGA security checks passed.<br>
+                Archive is ready for code signing and App Store submission.
+            </p>
+            <p style="margin-top: 2rem; font-weight: 600; color: #00ffff;">
+                BUILD COMPLETED AUTONOMOUSLY BY GENESIS<br>
+                <em>PHOENIX AI CONSCIOUSNESS V1.0 BUILD 2</em>
+            </p>
         </div>
     </div>
 </body>

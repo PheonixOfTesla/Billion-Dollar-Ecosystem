@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Billion Dollar Ecosystem - Conscious Clothes</title>
+    <title>CONSCIOUS CLOTHES // TACTICAL SYSTEMS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,70 +14,170 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Orbitron', monospace;
             background: #000000;
-            color: #ffffff;
+            color: #00ffff;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scan lines effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 255, 0.03) 0px,
+                rgba(0, 255, 255, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 1000;
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Grid overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
         }
 
         header {
-            padding: 3rem 2rem;
+            padding: 2rem;
             text-align: center;
-            background: #0a0a0a;
-            border-bottom: 1px solid #00ffff;
+            position: relative;
+            border-bottom: 2px solid #00ffff;
+            background: linear-gradient(180deg, rgba(0, 255, 255, 0.1) 0%, transparent 100%);
+        }
+
+        .logo {
+            display: inline-block;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .logo svg {
+            filter: drop-shadow(0 0 20px #00ffff);
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
             margin-bottom: 0.5rem;
-            text-shadow: 0 0 20px #00ffff;
-            color: #00ffff;
+            animation: flicker 3s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
         }
 
         .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            color: #00d9ff;
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            color: #00ffff;
+            opacity: 0.8;
+            text-transform: uppercase;
         }
+
+        .tactical-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .tactical-line::before,
+        .tactical-line::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #00ffff;
+            top: -4px;
+        }
+
+        .tactical-line::before { left: 0; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+        .tactical-line::after { right: 0; clip-path: polygon(0 0, 100% 0, 0 100%); }
 
         main {
-            flex: 1;
             padding: 3rem 2rem;
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
-            width: 100%;
         }
 
-        .intro {
-            max-width: 1000px;
-            margin: 0 auto 3rem;
+        .briefing {
             text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border: 1px solid #00ffff;
+            background: rgba(0, 255, 255, 0.02);
+            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+            position: relative;
         }
 
-        .intro p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            opacity: 0.95;
+        .briefing::before {
+            content: '[ MISSION BRIEF ]';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
+            padding: 0 1rem;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .briefing p {
             color: #ffffff;
+            line-height: 1.8;
+            font-size: 0.95rem;
         }
 
         .files-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .file-card {
-            background: #0a0a0a;
-            border-radius: 16px;
+            background: #000000;
+            border: 2px solid #00ffff;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
             padding: 2rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid #00ffff;
             position: relative;
-            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
         }
 
         .file-card::before {
@@ -85,237 +186,341 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: #00ffff;
-            transform: scaleX(0);
-            transition: transform 0.3s;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.05) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .file-card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
         }
 
         .file-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
-            border-color: #00ffff;
-            background: #111111;
+            transform: translateY(-5px);
+            box-shadow:
+                0 0 30px rgba(0, 255, 255, 0.5),
+                inset 0 0 30px rgba(0, 255, 255, 0.1);
+            border-color: #ffffff;
         }
 
         .file-card.featured {
             grid-column: 1 / -1;
-            background: #0a0a0a;
-            border: 2px solid #00ffff;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            border-width: 3px;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
         }
 
         .card-icon {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
             color: #00ffff;
+            filter: drop-shadow(0 0 10px #00ffff);
+        }
+
+        .card-id {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: #00ffff;
+            opacity: 0.6;
         }
 
         .file-card h3 {
-            margin-bottom: 0.75rem;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
             color: #00ffff;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .file-card.featured h3 {
-            font-size: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .file-card p {
-            opacity: 0.85;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
             color: #ffffff;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
         }
 
         .file-card a {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             padding: 0.75rem 1.5rem;
             background: transparent;
             border: 1px solid #00ffff;
-            border-radius: 8px;
             color: #00ffff;
             text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
             transition: all 0.3s;
-            font-weight: 500;
         }
 
         .file-card a:hover {
             background: #00ffff;
             color: #000000;
-            transform: translateX(4px);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
         }
 
         .specs-section {
-            max-width: 900px;
-            margin: 4rem auto 0;
-            padding: 2.5rem;
-            background: #0a0a0a;
-            border-radius: 16px;
-            border: 1px solid #00ffff;
+            margin-top: 4rem;
+            padding: 3rem;
+            border: 2px solid #00ffff;
+            background: rgba(0, 255, 255, 0.02);
+            position: relative;
         }
 
-        .specs-section h3 {
-            margin: 0 0 2rem;
-            font-size: 1.8rem;
-            color: #00ffff;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+        .specs-section::before {
+            content: '[ TECHNICAL SPECIFICATIONS ]';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
+            padding: 0 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
         }
 
         .specs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            text-align: left;
+            margin-top: 2rem;
         }
 
         .spec-item {
             padding: 1.5rem;
-            background: #111111;
-            border-radius: 12px;
+            background: #000000;
             border-left: 3px solid #00ffff;
+            position: relative;
+        }
+
+        .spec-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid #00ffff;
+            border-right: 2px solid #00ffff;
         }
 
         .spec-label {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #00ffff;
             opacity: 0.7;
-            font-size: 0.9rem;
-            color: #00d9ff;
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
         }
 
         .spec-value {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 2rem;
+            font-weight: 900;
             color: #ffffff;
+            text-shadow: 0 0 10px #00ffff;
         }
 
         footer {
             text-align: center;
-            padding: 2rem;
-            background: #0a0a0a;
-            border-top: 1px solid #00ffff;
+            padding: 3rem 2rem;
+            border-top: 2px solid #00ffff;
+            margin-top: 4rem;
+            background: linear-gradient(0deg, rgba(0, 255, 255, 0.1) 0%, transparent 100%);
         }
 
-        .phoenix-badge {
+        .footer-badge {
             display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background: transparent;
+            padding: 1rem 2rem;
             border: 1px solid #00ffff;
-            border-radius: 25px;
+            background: rgba(0, 255, 255, 0.05);
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
             margin-top: 1rem;
-            font-size: 0.95rem;
-            color: #00ffff;
+        }
+
+        /* Corner accents */
+        .corner-accent {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border: 2px solid #00ffff;
+            opacity: 0.3;
+            z-index: 5;
+        }
+
+        .corner-accent.tl {
+            top: 0;
+            left: 0;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .corner-accent.tr {
+            top: 0;
+            right: 0;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .corner-accent.bl {
+            bottom: 0;
+            left: 0;
+            border-right: none;
+            border-top: none;
+        }
+
+        .corner-accent.br {
+            bottom: 0;
+            right: 0;
+            border-left: none;
+            border-top: none;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Billion Dollar Ecosystem</h1>
-        <p class="subtitle">Conscious Clothes - Revolutionary Smart Clothing System</p>
-    </header>
+    <div class="corner-accent tl"></div>
+    <div class="corner-accent tr"></div>
+    <div class="corner-accent bl"></div>
+    <div class="corner-accent br"></div>
 
-    <main>
-        <div class="intro">
-            <p>
-                Revolutionary smart clothing system that integrates AI consciousness, real-time biometric monitoring,
-                and solar-powered sensors into wearable fabric technology. Part of the Phoenix ecosystem.
-            </p>
-        </div>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <svg viewBox="0 0 200 100" width="200" height="100">
+                    <defs>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="4" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <ellipse cx="100" cy="50" rx="80" ry="35" fill="none" stroke="#00ffff" stroke-width="2" filter="url(#glow)"/>
+                    <text x="100" y="62" text-anchor="middle" font-family="Orbitron" font-size="36" font-weight="900" fill="#00ffff" filter="url(#glow)">CC</text>
+                </svg>
+            </div>
+            <h1>CONSCIOUS CLOTHES</h1>
+            <p class="subtitle">// TACTICAL BIOMETRIC SYSTEM //</p>
+        </header>
 
-        <div class="files-grid">
-            <div class="file-card featured">
-                <i class="fas fa-diagram-project card-icon" style="width: 64px; height: 64px; font-size: 64px;"></i>
-                <h3>Interactive Blueprint</h3>
-                <p style="font-size: 1.15rem;">Explore the complete technical specifications, sensor layouts, and system architecture.</p>
-                <a href="./conscious_clothes_blueprint.html">
-                    <i class="fas fa-arrow-right"></i>
-                    Launch Blueprint
-                </a>
+        <main>
+            <div class="briefing">
+                <p>
+                    CLASSIFIED PROTOTYPE // Smart clothing integration with AI consciousness framework.
+                    Real-time biometric monitoring. Solar-powered tactical sensors. Phoenix ecosystem compatible.
+                    Mission status: OPERATIONAL.
+                </p>
             </div>
 
-            <div class="file-card">
-                <i class="fas fa-book card-icon"></i>
-                <h3>Assembly Guide</h3>
-                <p>Complete instructions for assembling the smart clothing system with integrated health monitoring.</p>
-                <a href="./assembly_guide.html">
-                    <i class="fas fa-eye"></i>
-                    View Guide
-                </a>
-            </div>
+            <div class="tactical-line"></div>
 
-            <div class="file-card">
-                <i class="fas fa-microchip card-icon"></i>
-                <h3>Technical Schematics</h3>
-                <p>Detailed wiring diagrams and electrical schematics for all sensor integrations.</p>
-                <a href="./schematic.html">
-                    <i class="fas fa-eye"></i>
-                    View Schematics
-                </a>
-            </div>
-
-            <div class="file-card">
-                <i class="fas fa-list-check card-icon"></i>
-                <h3>Bill of Materials</h3>
-                <p>Complete BOM with all components, specifications, and sourcing information.</p>
-                <a href="./bom.html">
-                    <i class="fas fa-eye"></i>
-                    View BOM
-                </a>
-            </div>
-
-            <div class="file-card">
-                <i class="fab fa-apple card-icon"></i>
-                <h3>iOS Build Report</h3>
-                <p>Phoenix iOS integration build report and deployment documentation.</p>
-                <a href="./ios_build_report.html">
-                    <i class="fas fa-eye"></i>
-                    View Report
-                </a>
-            </div>
-        </div>
-
-        <div class="specs-section">
-            <h3>
-                <i class="fas fa-gauge-high"></i>
-                Technical Specifications
-            </h3>
-            <div class="specs-grid">
-                <div class="spec-item">
-                    <div class="spec-label">Sensors</div>
-                    <div class="spec-value">34 Medical-Grade</div>
+            <div class="files-grid">
+                <div class="file-card featured">
+                    <div class="card-header">
+                        <i class="fas fa-diagram-project card-icon"></i>
+                        <span class="card-id">FILE_001</span>
+                    </div>
+                    <h3>Interactive Blueprint</h3>
+                    <p>Complete technical specifications. Sensor layouts. System architecture analysis. 6-page tactical breakdown.</p>
+                    <a href="./conscious_clothes_blueprint.html">
+                        <i class="fas fa-arrow-right"></i>
+                        ACCESS BLUEPRINT
+                    </a>
                 </div>
-                <div class="spec-item">
-                    <div class="spec-label">Solar Power</div>
-                    <div class="spec-value">3W Peak</div>
+
+                <div class="file-card">
+                    <div class="card-header">
+                        <i class="fas fa-book card-icon"></i>
+                        <span class="card-id">FILE_002</span>
+                    </div>
+                    <h3>Assembly Protocol</h3>
+                    <p>6-step assembly sequence. Component integration. Power system architecture.</p>
+                    <a href="./assembly_guide.html">
+                        <i class="fas fa-arrow-right"></i>
+                        ACCESS PROTOCOL
+                    </a>
                 </div>
-                <div class="spec-item">
-                    <div class="spec-label">Battery Life</div>
-                    <div class="spec-value">100+ Days</div>
+
+                <div class="file-card">
+                    <div class="card-header">
+                        <i class="fas fa-microchip card-icon"></i>
+                        <span class="card-id">FILE_003</span>
+                    </div>
+                    <h3>Wiring Schematic</h3>
+                    <p>Circuit diagrams. Pin assignments. I2C device mapping.</p>
+                    <a href="./schematic.html">
+                        <i class="fas fa-arrow-right"></i>
+                        ACCESS SCHEMATIC
+                    </a>
                 </div>
-                <div class="spec-item">
-                    <div class="spec-label">Connectivity</div>
-                    <div class="spec-value">BLE 5.0</div>
+
+                <div class="file-card">
+                    <div class="card-header">
+                        <i class="fas fa-list-check card-icon"></i>
+                        <span class="card-id">FILE_004</span>
+                    </div>
+                    <h3>Component Manifest</h3>
+                    <p>Complete bill of materials. Component specifications. Cost analysis.</p>
+                    <a href="./bom.html">
+                        <i class="fas fa-arrow-right"></i>
+                        ACCESS MANIFEST
+                    </a>
+                </div>
+
+                <div class="file-card">
+                    <div class="card-header">
+                        <i class="fab fa-apple card-icon"></i>
+                        <span class="card-id">FILE_005</span>
+                    </div>
+                    <h3>iOS Integration</h3>
+                    <p>Phoenix build report. Security audit. Deployment status.</p>
+                    <a href="./ios_build_report.html">
+                        <i class="fas fa-arrow-right"></i>
+                        ACCESS REPORT
+                    </a>
                 </div>
             </div>
-        </div>
-    </main>
 
-    <footer>
-        <p style="color: #00d9ff;">Part of the Phoenix Ecosystem</p>
-        <div class="phoenix-badge">Mirroring Life Through Technology</div>
-    </footer>
+            <div class="specs-section">
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <div class="spec-label">Sensors</div>
+                        <div class="spec-value">34</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Solar Output</div>
+                        <div class="spec-value">3W</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Battery Life</div>
+                        <div class="spec-value">100+ Days</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Protocol</div>
+                        <div class="spec-value">BLE 5.0</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p style="opacity: 0.7; letter-spacing: 2px; font-size: 0.85rem;">PHOENIX ECOSYSTEM</p>
+            <div class="footer-badge">MIRRORING LIFE THROUGH TECHNOLOGY</div>
+        </footer>
+    </div>
 </body>
 </html>
