@@ -468,6 +468,40 @@
 
             <div class="tactical-line"></div>
 
+            <!-- TACTICAL VIDEO BRIEFING #2 - CHIP MODULE -->
+            <style>
+                @keyframes pulse-glow {
+                    0%, 100% {
+                        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3),
+                                    0 0 40px rgba(0, 255, 255, 0.2);
+                    }
+                    50% {
+                        box-shadow: 0 0 30px rgba(0, 255, 255, 0.6),
+                                    0 0 60px rgba(0, 255, 255, 0.4);
+                    }
+                }
+                .chip-video {
+                    width: 100%;
+                    max-width: 600px;
+                    border: 3px solid #00ffff;
+                    animation: pulse-glow 3s ease-in-out infinite;
+                }
+            </style>
+            <div style="margin-bottom: 3rem;">
+                <div style="background: #000000; border: 2px solid #00ffff; clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px)); padding: 2rem; position: relative; text-align: center;">
+                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #000; padding: 0 1rem; font-size: 0.8rem; letter-spacing: 2px;">[ CHIP MODULE ANALYSIS ]</div>
+                    <div style="position: absolute; top: 10px; right: 20px; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.6;">FILE_00B</div>
+                    <video autoplay loop muted playsinline class="chip-video">
+                        <source src="./Electronic_Chip_Module_Video_Generation.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div style="margin-top: 1.5rem; text-align: center; color: #00ffff; font-size: 0.9rem; letter-spacing: 2px; opacity: 0.8;">ELECTRONIC CHIP MODULE GENERATION</div>
+                    <div style="margin-top: 0.5rem; text-align: center; color: #ffffff; font-size: 0.7rem; letter-spacing: 1px; opacity: 0.5;">NEURAL PROCESSING CORE // ACTIVE</div>
+                </div>
+            </div>
+
+            <div class="tactical-line"></div>
+
             <div class="files-grid">
                 <div class="file-card featured">
                     <div class="card-header">
