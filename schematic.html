@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiring Schematic - Conscious Clothes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #164e63 0%, #06b6d4 50%, #083344 100%);
+            color: #cffafe;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #06b6d4;
+            margin-bottom: 1rem;
+        }
+
+        .nav {
+            margin-bottom: 2rem;
+        }
+
+        .nav a {
+            color: #06b6d4;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #67e8f9;
+        }
+
+        .download-section {
+            background: rgba(8, 51, 68, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(6, 182, 212, 0.2);
+            border: 1px solid #06b6d4;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            color: #cffafe;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .download-btn:hover {
+            background: #06b6d4;
+            color: #083344;
+            transform: translateY(-2px);
+        }
+
+        .content-section {
+            background: rgba(8, 51, 68, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            color: #06b6d4;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 1rem;
+            border-collapse: collapse;
+        }
+
+        table th,
+        table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        table th {
+            background: rgba(6, 182, 212, 0.2);
+            color: #06b6d4;
+            font-weight: 600;
+        }
+
+        .note {
+            background: rgba(234, 179, 8, 0.1);
+            border-left: 3px solid #eab308;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .note h3 {
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+
+        .note ul {
+            margin-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .quick-ref {
+            background: rgba(6, 182, 212, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 3px solid #06b6d4;
+        }
+
+        .quick-ref h3 {
+            color: #06b6d4;
+            margin-bottom: 1rem;
+        }
+
+        .quick-ref ul {
+            list-style: none;
+            line-height: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="./index.html">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+        </nav>
+
+        <header>
+            <h1><i class="fas fa-diagram-project"></i> Wiring Schematic</h1>
+            <p style="color: #a5f3fc;">Conscious Clothes Smart Garment System</p>
+        </header>
+
+        <div class="download-section">
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                Complete technical wiring diagrams with SVG schematics showing all connections,
+                pin assignments, and electrical specifications.
+            </p>
+            <a href="./conscious_clothes_schematic.jsx" download class="download-btn">
+                <i class="fas fa-download"></i>
+                Download React Component (JSX)
+            </a>
+        </div>
+
+        <div class="content-section">
+            <h2><i class="fas fa-microchip"></i> Pin Connection Reference</h2>
+
+            <h3 style="color: #67e8f9; margin: 1.5rem 0 1rem;">STM32F405 Connections</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>STM32 Pin</th>
+                        <th>Connection</th>
+                        <th>Function</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>PA0</td><td>AD8232 OUT</td><td>ECG ADC Input</td></tr>
+                    <tr><td>PA2</td><td>nRF52 RX</td><td>UART TX</td></tr>
+                    <tr><td>PA3</td><td>nRF52 TX</td><td>UART RX</td></tr>
+                    <tr><td>PA5</td><td>I2C Bus</td><td>SCL (w/ 10kΩ pullup)</td></tr>
+                    <tr><td>PA6</td><td>I2C Bus</td><td>SDA (w/ 10kΩ pullup)</td></tr>
+                    <tr><td>PA8</td><td>DS18B20 ×4</td><td>1-Wire (w/ 4.7kΩ pullup)</td></tr>
+                    <tr><td>PB13</td><td>Flash SCK</td><td>SPI Clock</td></tr>
+                    <tr><td>PB14</td><td>Flash MISO</td><td>SPI Data In</td></tr>
+                    <tr><td>PB15</td><td>Flash MOSI</td><td>SPI Data Out</td></tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: #67e8f9; margin: 1.5rem 0 1rem;">I2C Device Addresses</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>I2C Device</th>
+                        <th>Address</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>MAX30102 #1</td><td>0x57</td><td>Primary PPG</td></tr>
+                    <tr><td>MAX30102 #2</td><td>0x57*</td><td>Via TCA9548A mux</td></tr>
+                    <tr><td>MPU-9250</td><td>0x68</td><td>AD0 → GND</td></tr>
+                    <tr><td>AD5933</td><td>0x0D</td><td>Fixed address</td></tr>
+                    <tr><td>TCA9548A</td><td>0x70</td><td>I2C Multiplexer</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <div class="quick-ref">
+                <h3><i class="fas fa-book"></i> Quick Reference</h3>
+                <ul>
+                    <li><strong>I2C Bus:</strong> 400kHz</li>
+                    <li><strong>SPI Bus:</strong> 10MHz</li>
+                    <li><strong>UART:</strong> 115200 baud</li>
+                    <li><strong>1-Wire:</strong> 4.7kΩ pullup resistor</li>
+                    <li><strong>I2C:</strong> 10kΩ pullup resistors on SDA/SCL</li>
+                    <li><strong>ADC:</strong> 12-bit @ 1MHz sampling</li>
+                    <li><strong>VCC:</strong> 3.3V for all components</li>
+                </ul>
+            </div>
+
+            <div class="note">
+                <h3><i class="fas fa-triangle-exclamation"></i> Important Notes</h3>
+                <ul>
+                    <li>Both MAX30102 sensors have the same I2C address (0x57) - requires I2C multiplexer (TCA9548A) for the second sensor</li>
+                    <li>All I2C lines need 10kΩ pull-up resistors to 3.3V</li>
+                    <li>1-Wire bus needs a single 4.7kΩ pull-up resistor</li>
+                    <li>AD8232 output is analog (0-3.3V) and connects directly to ADC pin</li>
+                    <li>nRF52832 UART connections are crossed: STM32 TX → nRF RX, STM32 RX → nRF TX</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

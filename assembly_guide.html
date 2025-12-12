@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assembly Guide - Conscious Clothes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #164e63 0%, #06b6d4 50%, #083344 100%);
+            color: #cffafe;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: rgba(8, 51, 68, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #06b6d4;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a5f3fc;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: #67e8f9;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        .nav {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav a {
+            color: #06b6d4;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #67e8f9;
+        }
+
+        .download-btn {
+            background: rgba(6, 182, 212, 0.2);
+            border: 1px solid #06b6d4;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .download-btn:hover {
+            background: #06b6d4;
+            color: #083344;
+        }
+
+        .section {
+            background: rgba(8, 51, 68, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            color: #06b6d4;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h3 {
+            color: #67e8f9;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tool-card {
+            background: rgba(6, 182, 212, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #06b6d4;
+        }
+
+        .tool-card strong {
+            color: #06b6d4;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .step {
+            background: rgba(6, 182, 212, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #06b6d4;
+        }
+
+        .step-number {
+            background: #06b6d4;
+            color: #083344;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            color: #06b6d4;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        ul {
+            margin: 1rem 0 1rem 2rem;
+            line-height: 1.8;
+        }
+
+        .note {
+            background: rgba(234, 179, 8, 0.1);
+            border-left: 3px solid #eab308;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            color: #fef3c7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="./index.html">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+            <a href="./conscious_clothes_assembly_guide.jsx" download class="download-btn">
+                <i class="fas fa-download"></i>
+                Download Full Guide (JSX)
+            </a>
+        </nav>
+
+        <header>
+            <h1><i class="fas fa-screwdriver-wrench"></i> Assembly Guide</h1>
+            <p class="subtitle">Conscious Clothes Smart Garment System</p>
+            <p class="tagline">If you can follow LEGO instructions, you can build this</p>
+        </header>
+
+        <div class="section">
+            <h2><i class="fas fa-toolbox"></i> Tools You'll Need</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <strong>Soldering Iron</strong>
+                    <p style="color: #a5f3fc; font-size: 0.9rem;">Fine tip, temperature controlled</p>
+                </div>
+                <div class="tool-card">
+                    <strong>Multimeter</strong>
+                    <p style="color: #a5f3fc; font-size: 0.9rem;">For testing connections</p>
+                </div>
+                <div class="tool-card">
+                    <strong>Tweezers</strong>
+                    <p style="color: #a5f3fc; font-size: 0.9rem;">For tiny SMD components</p>
+                </div>
+                <div class="tool-card">
+                    <strong>Wire Strippers</strong>
+                    <p style="color: #a5f3fc; font-size: 0.9rem;">28-30 AWG size</p>
+                </div>
+                <div class="tool-card">
+                    <strong>Helping Hands</strong>
+                    <p style="color: #a5f3fc; font-size: 0.9rem;">Holds boards steady</p>
+                </div>
+                <div class="tool-card">
+                    <strong>Sewing Needle</strong>
+                    <p style="color: #a5f3fc; font-size: 0.9rem;">Large eye for conductive thread</p>
+                </div>
+                <div class="tool-card">
+                    <strong>Hot Glue Gun</strong>
+                    <p style="color: #a5f3fc; font-size: 0.9rem;">For strain relief</p>
+                </div>
+                <div class="tool-card">
+                    <strong>Computer + USB</strong>
+                    <p style="color: #a5f3fc; font-size: 0.9rem;">For programming firmware</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-list-check"></i> Assembly Steps</h2>
+
+            <div class="step">
+                <div class="step-header">
+                    <span class="step-number">1</span>
+                    <span class="step-title">Build the Power System</span>
+                </div>
+                <p style="color: #a5f3fc; margin-bottom: 1rem;">Do this first! Everything needs power.</p>
+                <ul>
+                    <li>Connect USB-C connector (J1) for 5V input</li>
+                    <li>Wire BQ24075 battery charger IC with 10kΩ resistors on ISET and TS pins</li>
+                    <li>Connect 3.7V 1000mAh LiPo battery to VBAT pin</li>
+                    <li>Connect 20× MP3-37 solar panels in parallel configuration</li>
+                    <li>Test voltage output with multimeter before proceeding</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <span class="step-number">2</span>
+                    <span class="step-title">Assemble the Main PCB</span>
+                </div>
+                <ul>
+                    <li>Solder STM32F405RGT6 microcontroller (64-pin LQFP) - use flux!</li>
+                    <li>Add nRF52832 BLE module (pre-made module recommended)</li>
+                    <li>Place all decoupling capacitors (100nF) near each IC</li>
+                    <li>Solder 8MHz crystal with 22pF load capacitors</li>
+                    <li>Add voltage regulator (AMS1117-3.3) with input/output caps</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <span class="step-number">3</span>
+                    <span class="step-title">Install Sensor Modules</span>
+                </div>
+                <ul>
+                    <li><strong>AD8232 ECG:</strong> Mount module, connect 3 electrode leads</li>
+                    <li><strong>MAX30102 ×2:</strong> Install both PPG sensors, add TCA9548A I2C mux</li>
+                    <li><strong>MPU-9250:</strong> Mount IMU module on back side</li>
+                    <li><strong>AD5933:</strong> Install impedance analyzer with electrode connections</li>
+                    <li><strong>DS18B20 ×4:</strong> Wire temperature sensors to 1-Wire bus (PA8)</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <span class="step-number">4</span>
+                    <span class="step-title">Wire I2C and SPI Buses</span>
+                </div>
+                <ul>
+                    <li>Add 10kΩ pullup resistors to SDA (PA6) and SCL (PA5)</li>
+                    <li>Connect all I2C devices to shared SDA/SCL lines</li>
+                    <li>Wire SPI flash (W25Q128) to PB13/14/15 pins</li>
+                    <li>Double-check all connections with schematic</li>
+                </ul>
+                <div class="note">
+                    <strong><i class="fas fa-info-circle"></i> Critical:</strong> Both MAX30102 sensors share address 0x57,
+                    so second sensor MUST go through TCA9548A multiplexer!
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <span class="step-number">5</span>
+                    <span class="step-title">Integrate into Garment</span>
+                </div>
+                <ul>
+                    <li>Sew conductive thread pathways on compression shirt base</li>
+                    <li>Attach ECG electrodes to chest area (RA, LA, RL positions)</li>
+                    <li>Mount PPG sensors: one on chest, one on shoulder/wrist</li>
+                    <li>Place temperature sensors at chest, back, and arm locations</li>
+                    <li>Install solar panel array on back (TPU encapsulated for washability)</li>
+                    <li>Create secure pocket for main electronics module</li>
+                    <li>Use hot glue for strain relief on all wire junctions</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <div class="step-header">
+                    <span class="step-number">6</span>
+                    <span class="step-title">Program & Test</span>
+                </div>
+                <ul>
+                    <li>Flash STM32 firmware via USB using ST-Link programmer</li>
+                    <li>Program nRF52832 with BLE stack</li>
+                    <li>Test each sensor individually with multimeter/oscilloscope</li>
+                    <li>Verify I2C communication at 400kHz</li>
+                    <li>Check BLE connectivity with smartphone app</li>
+                    <li>Run full system diagnostic and calibration</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-triangle-exclamation"></i> Safety & Tips</h2>
+            <ul>
+                <li><strong>ESD Protection:</strong> Use anti-static wrist strap when handling electronics</li>
+                <li><strong>Soldering:</strong> Work in ventilated area, use lead-free solder</li>
+                <li><strong>Testing:</strong> Never power on until all connections verified</li>
+                <li><strong>Washing:</strong> Remove electronics module before washing garment</li>
+                <li><strong>Battery:</strong> Never puncture or short-circuit LiPo battery</li>
+            </ul>
+
+            <div class="note" style="margin-top: 1.5rem;">
+                <strong><i class="fas fa-download"></i> Complete Guide Available</strong>
+                <p style="margin-top: 0.5rem;">
+                    This is an overview. Download the full React component (JSX) above for detailed diagrams,
+                    SVG schematics, and step-by-step visual instructions with checkboxes.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
