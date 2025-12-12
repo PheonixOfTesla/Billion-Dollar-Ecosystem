@@ -535,6 +535,129 @@
                 </div>
             </div>
 
+            <div class="tactical-line"></div>
+
+            <!-- TACTICAL IMAGE GALLERY -->
+            <div class="section" style="background: #000000; border: 2px solid #00ffff; clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px)); padding: 2rem; position: relative; margin-bottom: 3rem;">
+                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #000; padding: 0 1rem; font-size: 0.8rem; letter-spacing: 2px;">[ SURVEILLANCE IMAGERY ]</div>
+                <div style="position: absolute; top: 10px; right: 20px; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.6;">CLASSIFIED</div>
+
+                <style>
+                    .image-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                        gap: 1.5rem;
+                        margin-top: 2rem;
+                    }
+                    .tactical-image {
+                        position: relative;
+                        overflow: hidden;
+                        border: 2px solid #00ffff;
+                        clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+                        transition: all 0.3s;
+                        cursor: pointer;
+                    }
+                    .tactical-image:hover {
+                        transform: scale(1.05);
+                        box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+                        border-color: #ffffff;
+                    }
+                    .tactical-image img {
+                        width: 100%;
+                        height: 300px;
+                        object-fit: cover;
+                        display: block;
+                    }
+                    .tactical-image::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+                        pointer-events: none;
+                        opacity: 0;
+                        transition: opacity 0.3s;
+                    }
+                    .tactical-image:hover::before {
+                        opacity: 1;
+                    }
+                    .image-label {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        background: rgba(0, 0, 0, 0.9);
+                        border-top: 1px solid #00ffff;
+                        padding: 0.75rem;
+                        color: #00ffff;
+                        font-size: 0.75rem;
+                        letter-spacing: 1px;
+                        text-align: center;
+                        opacity: 0;
+                        transform: translateY(100%);
+                        transition: all 0.3s;
+                    }
+                    .tactical-image:hover .image-label {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                    @media (max-width: 768px) {
+                        .image-grid {
+                            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                            gap: 1rem;
+                        }
+                        .tactical-image img {
+                            height: 200px;
+                        }
+                    }
+                </style>
+
+                <div class="image-grid">
+                    <div class="tactical-image">
+                        <img src="./unnamed-1.jpg" alt="Prototype Image 1">
+                        <div class="image-label">PROTOTYPE ALPHA // SECTOR 01</div>
+                    </div>
+                    <div class="tactical-image">
+                        <img src="./unnamed-2.jpg" alt="Prototype Image 2">
+                        <div class="image-label">SENSOR ARRAY // SECTOR 02</div>
+                    </div>
+                    <div class="tactical-image">
+                        <img src="./unnamed-3.jpg" alt="Prototype Image 3">
+                        <div class="image-label">CIRCUITRY LAYOUT // SECTOR 03</div>
+                    </div>
+                    <div class="tactical-image">
+                        <img src="./unnamed-4.jpg" alt="Prototype Image 4">
+                        <div class="image-label">POWER SYSTEMS // SECTOR 04</div>
+                    </div>
+                    <div class="tactical-image">
+                        <img src="./unnamed-5.jpg" alt="Prototype Image 5">
+                        <div class="image-label">INTEGRATION TEST // SECTOR 05</div>
+                    </div>
+                    <div class="tactical-image">
+                        <img src="./unnamed-6.jpg" alt="Prototype Image 6">
+                        <div class="image-label">FIELD DEPLOYMENT // SECTOR 06</div>
+                    </div>
+                    <div class="tactical-image">
+                        <img src="./unnamed-7.jpg" alt="Prototype Image 7">
+                        <div class="image-label">OPERATIONAL STATUS // SECTOR 07</div>
+                    </div>
+                    <div class="tactical-image">
+                        <img src="./unnamed-8.jpg" alt="Prototype Image 8">
+                        <div class="image-label">BIOMETRIC SYNC // SECTOR 08</div>
+                    </div>
+                    <div class="tactical-image">
+                        <img src="./unnamed-9.jpg" alt="Prototype Image 9">
+                        <div class="image-label">FINAL ASSEMBLY // SECTOR 09</div>
+                    </div>
+                    <div class="tactical-image">
+                        <img src="./unnamed-10.jpg" alt="Prototype Image 10">
+                        <div class="image-label">MISSION READY // SECTOR 10</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="specs-section">
                 <div class="specs-grid">
                     <div class="spec-item">
