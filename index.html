@@ -493,7 +493,202 @@
             user-select: none;
         }
 
+        /* PASSWORD ENTRY SCREEN */
+        .password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .password-overlay.hidden {
+            display: none;
+        }
+
+        .access-terminal {
+            background: rgba(0, 0, 0, 0.95);
+            border: 3px solid #00ffff;
+            clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow:
+                0 0 50px rgba(0, 255, 255, 0.5),
+                inset 0 0 50px rgba(0, 255, 255, 0.1);
+            animation: pulse-border 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-border {
+            0%, 100% {
+                border-color: #00ffff;
+                box-shadow:
+                    0 0 50px rgba(0, 255, 255, 0.5),
+                    inset 0 0 50px rgba(0, 255, 255, 0.1);
+            }
+            50% {
+                border-color: #ffffff;
+                box-shadow:
+                    0 0 70px rgba(0, 255, 255, 0.8),
+                    inset 0 0 70px rgba(0, 255, 255, 0.2);
+            }
+        }
+
+        .access-terminal::before {
+            content: '[ CLASSIFIED ACCESS ]';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
+            padding: 0 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        .terminal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .terminal-header h2 {
+            font-size: 1.8rem;
+            color: #00ffff;
+            letter-spacing: 4px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px #00ffff;
+        }
+
+        .terminal-header .warning {
+            font-size: 0.65rem;
+            color: #ff0000;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            animation: blink-red 1.5s infinite;
+        }
+
+        .password-input-group {
+            margin: 2rem 0;
+        }
+
+        .password-label {
+            display: block;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #00ffff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .password-input {
+            width: 100%;
+            background: #000000;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            letter-spacing: 15px;
+            text-align: center;
+            padding: 1rem;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .password-input:focus {
+            border-color: #ffffff;
+            box-shadow:
+                0 0 30px rgba(0, 255, 255, 0.8),
+                inset 0 0 20px rgba(0, 255, 255, 0.1);
+        }
+
+        .password-input::placeholder {
+            color: rgba(0, 255, 255, 0.3);
+            letter-spacing: 8px;
+        }
+
+        .access-button {
+            width: 100%;
+            background: transparent;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            padding: 1rem;
+            cursor: pointer;
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .access-button:hover {
+            background: #00ffff;
+            color: #000000;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+        }
+
+        .access-denied {
+            text-align: center;
+            color: #ff0000;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-top: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .access-denied.show {
+            opacity: 1;
+            animation: blink-red 0.5s 3;
+        }
+
+        .terminal-footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        .security-badges {
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.6rem;
+            opacity: 0.5;
+            letter-spacing: 1px;
+        }
+
+        .main-content {
+            display: none;
+        }
+
+        .main-content.unlocked {
+            display: block;
+        }
+
         @media (max-width: 768px) {
+            .access-terminal {
+                padding: 2rem;
+            }
+            .terminal-header h2 {
+                font-size: 1.4rem;
+            }
+            .password-input {
+                font-size: 1.5rem;
+                letter-spacing: 10px;
+            }
             .threat-indicator, .clearance-level, .timestamp-overlay, .encryption-status {
                 font-size: 0.5rem;
                 padding: 0.3rem 0.6rem;
@@ -566,8 +761,48 @@
     </style>
 </head>
 <body>
-    <!-- TACTICAL HUD OVERLAYS -->
-    <div class="watermark">TOP SECRET</div>
+    <!-- PASSWORD ENTRY SCREEN -->
+    <div class="password-overlay" id="passwordOverlay">
+        <div class="access-terminal">
+            <div class="terminal-header">
+                <h2>RESTRICTED ACCESS</h2>
+                <p class="warning"><i class="fas fa-exclamation-triangle"></i> UNAUTHORIZED ACCESS PROHIBITED</p>
+            </div>
+
+            <div class="password-input-group">
+                <label class="password-label">ENTER 4-DIGIT AUTHORIZATION CODE</label>
+                <input
+                    type="password"
+                    id="passwordInput"
+                    class="password-input"
+                    maxlength="4"
+                    placeholder="****"
+                    autocomplete="off"
+                >
+            </div>
+
+            <button class="access-button" onclick="verifyAccess()">
+                <i class="fas fa-unlock"></i> REQUEST ACCESS
+            </button>
+
+            <div class="access-denied" id="accessDenied">
+                <i class="fas fa-times-circle"></i> ACCESS DENIED // INVALID CODE
+            </div>
+
+            <div class="terminal-footer">
+                <div class="security-badges">
+                    <span><i class="fas fa-shield-alt"></i> LEVEL 5</span>
+                    <span><i class="fas fa-lock"></i> AES-256</span>
+                    <span><i class="fas fa-fingerprint"></i> BIOMETRIC</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT (HIDDEN UNTIL PASSWORD VERIFIED) -->
+    <div class="main-content" id="mainContent">
+        <!-- TACTICAL HUD OVERLAYS -->
+        <div class="watermark">TOP SECRET</div>
 
     <div class="threat-indicator">
         <span class="status-dot green"></span>THREAT LEVEL: GREEN
@@ -986,5 +1221,44 @@
             </div>
         </footer>
     </div>
+    </div><!-- end main-content -->
+
+    <script>
+        // Password verification
+        function verifyAccess() {
+            const input = document.getElementById('passwordInput');
+            const overlay = document.getElementById('passwordOverlay');
+            const mainContent = document.getElementById('mainContent');
+            const accessDenied = document.getElementById('accessDenied');
+
+            if (input.value === '1545') {
+                // Access granted
+                overlay.classList.add('hidden');
+                mainContent.classList.add('unlocked');
+            } else {
+                // Access denied
+                accessDenied.classList.add('show');
+                input.value = '';
+                input.focus();
+
+                // Remove error message after 2 seconds
+                setTimeout(() => {
+                    accessDenied.classList.remove('show');
+                }, 2000);
+            }
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                verifyAccess();
+            }
+        });
+
+        // Auto-focus password input on load
+        window.addEventListener('load', function() {
+            document.getElementById('passwordInput').focus();
+        });
+    </script>
 </body>
 </html>
