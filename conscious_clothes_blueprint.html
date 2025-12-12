@@ -10,9 +10,12 @@
     body { margin:0; font-family:system-ui,sans-serif; background:#111827; color:white; }
     .page { display:none; min-height:100vh; padding:32px; padding-bottom:100px; }
     .page.active { display:block; }
-    .nav { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1f2937; padding:12px 24px; border-radius:50px; display:flex; gap:16px; align-items:center; z-index:999; }
-    .nav button { background:#3b82f6; color:white; border:none; padding:10px 24px; border-radius:8px; cursor:pointer; font-weight:bold; }
+    .nav { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1f2937; padding:12px 24px; border-radius:50px; display:flex; gap:16px; align-items:center; z-index:999; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .nav button { background:#3b82f6; color:white; border:none; padding:10px 24px; border-radius:8px; cursor:pointer; font-weight:bold; transition: background 0.3s; }
     .nav button:disabled { opacity:0.5; cursor:not-allowed; }
+    .nav button:hover:not(:disabled) { background:#2563eb; }
+    .nav a { background:#8b5cf6; color:white; text-decoration:none; padding:10px 24px; border-radius:8px; font-weight:bold; transition: background 0.3s; }
+    .nav a:hover { background:#7c3aed; }
     .card { background:#1f2937; border-radius:12px; padding:20px; }
     .sensor-box { background:#1f2937; border-radius:8px; padding:16px; border:1px solid #374151; }
   </style>
@@ -20,6 +23,7 @@
 <body>
 
 <div class="nav">
+  <a href="./index.html" title="Back to Home">🏠 Home</a>
   <button onclick="go(-1)" id="prevBtn">← Prev</button>
   <span id="pageNum" style="color:white;font-family:monospace;min-width:60px;text-align:center;">1 / 6</span>
   <button onclick="go(1)" id="nextBtn">Next →</button>
