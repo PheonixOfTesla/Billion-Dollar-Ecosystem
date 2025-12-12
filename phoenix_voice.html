@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHOENIX VOICE EDITION // CONSCIOUS CLOTHES V2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Orbitron', monospace;
+            background: #000000;
+            color: #00ffff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0,255,255,0.03) 0px, rgba(0,255,255,0.03) 1px, transparent 1px, transparent 2px);
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; position: relative; z-index: 10; }
+        header {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-bottom: 2px solid #00ffff;
+            background: linear-gradient(180deg, rgba(0,255,255,0.1) 0%, transparent 100%);
+            margin-bottom: 2rem;
+        }
+        .version-badge {
+            display: inline-block;
+            background: #ff6b00;
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-shadow: 0 0 20px #00ffff;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle { font-size: 1rem; letter-spacing: 4px; opacity: 0.8; color: #ff6b00; }
+        .tagline {
+            margin-top: 1.5rem;
+            font-size: 1.4rem;
+            color: #ffffff;
+            font-style: italic;
+        }
+        .section {
+            background: rgba(0,255,255,0.02);
+            border: 2px solid #00ffff;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+        }
+        .section.highlight {
+            border-color: #ff6b00;
+            background: rgba(255,107,0,0.05);
+        }
+        h2 {
+            color: #00ffff;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,255,255,0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        h2.orange { color: #ff6b00; border-color: rgba(255,107,0,0.3); }
+        h3 { color: #ffffff; margin: 1.5rem 0 1rem; font-size: 1rem; letter-spacing: 2px; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid rgba(0,255,255,0.2); }
+        th { background: rgba(0,255,255,0.1); color: #00ffff; font-size: 0.8rem; letter-spacing: 2px; }
+        td { color: #ffffff; }
+        td:first-child { color: #00ffff; }
+        tr:hover { background: rgba(0,255,255,0.05); }
+        .new-badge { 
+            background: #ff6b00; 
+            color: #000; 
+            padding: 2px 8px; 
+            font-size: 0.65rem; 
+            letter-spacing: 1px;
+            margin-left: 0.5rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .stat-card {
+            background: rgba(0,255,255,0.05);
+            padding: 1.5rem;
+            text-align: center;
+            border-left: 3px solid #00ffff;
+        }
+        .stat-card.new { border-color: #ff6b00; }
+        .stat-value { font-size: 2rem; font-weight: 900; color: #fff; }
+        .stat-label { font-size: 0.75rem; letter-spacing: 2px; margin-top: 0.5rem; opacity: 0.8; }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        .comparison-box {
+            padding: 1.5rem;
+            background: rgba(0,255,255,0.02);
+            border: 1px solid rgba(0,255,255,0.3);
+        }
+        .comparison-box.v2 { border-color: #ff6b00; background: rgba(255,107,0,0.02); }
+        .comparison-box h4 { margin-bottom: 1rem; letter-spacing: 2px; }
+        .comparison-box.v2 h4 { color: #ff6b00; }
+        ul { margin-left: 1.5rem; }
+        li { margin: 0.5rem 0; color: #ffffff; }
+        .callout {
+            background: rgba(255,107,0,0.1);
+            border-left: 4px solid #ff6b00;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .callout p { color: #ffffff; margin: 0; }
+        .pin-diagram {
+            background: #0a0a0a;
+            padding: 1.5rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            border: 1px solid rgba(0,255,255,0.3);
+        }
+        .pin-diagram pre { color: #00ffff; white-space: pre; }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(0,255,255,0.3);
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        code { background: rgba(0,255,255,0.1); padding: 2px 6px; color: #00ffff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="version-badge">VERSION 2.0 // PHOENIX VOICE</div>
+            <h1>CONSCIOUS CLOTHES</h1>
+            <p class="subtitle">// EMBEDDED AI VOICE ASSISTANT //</p>
+            <p class="tagline">"The first clothing that talks back."</p>
+        </header>
+
+        <!-- OVERVIEW -->
+        <div class="section highlight">
+            <h2 class="orange"><i class="fas fa-bolt"></i> WHAT'S NEW IN V2</h2>
+            <p style="color:#fff; margin-bottom: 1.5rem;">
+                Phoenix Voice Edition adds on-device AI voice interaction. No phone required. 
+                Ask your shirt questions, get spoken responses through bone conduction audio.
+            </p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">34</div>
+                    <div class="stat-label">BIOMETRIC SENSORS</div>
+                </div>
+                <div class="stat-card new">
+                    <div class="stat-value">VOICE</div>
+                    <div class="stat-label">AI ASSISTANT</div>
+                </div>
+                <div class="stat-card new">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">PHONE REQUIRED</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3W</div>
+                    <div class="stat-label">SOLAR POWER</div>
+                </div>
+            </div>
+
+            <div class="callout">
+                <p><strong>USE CASE:</strong> You're running. No phone. No earbuds. You ask: "Phoenix, how am I doing?" 
+                Voice comes through bone conduction near your collar: "Heart rate 142, zone 3. You've burned 340 calories. 
+                Pace is 8:15 — faster than yesterday."</p>
+            </div>
+        </div>
+
+        <!-- VERSION COMPARISON -->
+        <div class="section">
+            <h2><i class="fas fa-code-compare"></i> VERSION COMPARISON</h2>
+            <div class="comparison">
+                <div class="comparison-box">
+                    <h4>V1 — ORIGINAL</h4>
+                    <ul>
+                        <li>34 biometric sensors</li>
+                        <li>Solar energy harvesting</li>
+                        <li>BLE 5.0 → Phone app</li>
+                        <li>Phoenix AI on phone</li>
+                        <li>Requires smartphone</li>
+                        <li>Unit cost: ~$127</li>
+                    </ul>
+                </div>
+                <div class="comparison-box v2">
+                    <h4>V2 — PHOENIX VOICE</h4>
+                    <ul>
+                        <li>34 biometric sensors</li>
+                        <li>Solar energy harvesting</li>
+                        <li>BLE 5.0 + Optional LTE</li>
+                        <li><strong>Phoenix AI ON-DEVICE</strong></li>
+                        <li><strong>Voice in/out (no phone)</strong></li>
+                        <li><strong>Bone conduction audio</strong></li>
+                        <li>Unit cost: ~$175</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW COMPONENTS -->
+        <div class="section highlight">
+            <h2 class="orange"><i class="fas fa-plus-circle"></i> NEW COMPONENTS — VOICE AI MODULE</h2>
+            
+            <h3>VOICE INPUT</h3>
+            <table>
+                <thead>
+                    <tr><th>Ref</th><th>Component</th><th>Description</th><th>Qty</th><th>Cost</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>U12 <span class="new-badge">NEW</span></td>
+                        <td>SPH0645LM4H</td>
+                        <td>I2S MEMS Microphone, -26dB SNR 65dB</td>
+                        <td>1</td>
+                        <td>$2.85</td>
+                    </tr>
+                    <tr>
+                        <td>U13 <span class="new-badge">NEW</span></td>
+                        <td>INMP441</td>
+                        <td>Secondary MEMS Mic (noise cancellation)</td>
+                        <td>1</td>
+                        <td>$1.95</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>VOICE OUTPUT</h3>
+            <table>
+                <thead>
+                    <tr><th>Ref</th><th>Component</th><th>Description</th><th>Qty</th><th>Cost</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SPK1 <span class="new-badge">NEW</span></td>
+                        <td>Bone Conduction Transducer</td>
+                        <td>8Ω, collar-mounted, private audio</td>
+                        <td>1</td>
+                        <td>$12.50</td>
+                    </tr>
+                    <tr>
+                        <td>U14 <span class="new-badge">NEW</span></td>
+                        <td>MAX98357A</td>
+                        <td>I2S Class D Amplifier, 3.2W</td>
+                        <td>1</td>
+                        <td>$3.45</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>EDGE AI PROCESSING</h3>
+            <table>
+                <thead>
+                    <tr><th>Ref</th><th>Component</th><th>Description</th><th>Qty</th><th>Cost</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>U15 <span class="new-badge">NEW</span></td>
+                        <td>ESP32-S3-WROOM-1</td>
+                        <td>Dual-core 240MHz, AI acceleration, 8MB PSRAM</td>
+                        <td>1</td>
+                        <td>$4.20</td>
+                    </tr>
+                    <tr>
+                        <td>U16 <span class="new-badge">NEW</span></td>
+                        <td>W25Q256JVEIQ</td>
+                        <td>32MB Flash (voice model storage)</td>
+                        <td>1</td>
+                        <td>$4.85</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>OPTIONAL: CELLULAR CONNECTIVITY</h3>
+            <table>
+                <thead>
+                    <tr><th>Ref</th><th>Component</th><th>Description</th><th>Qty</th><th>Cost</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>U17 <span class="new-badge">OPT</span></td>
+                        <td>SIM7600G-H</td>
+                        <td>4G LTE Cat-4 Module (cloud connection w/o phone)</td>
+                        <td>1</td>
+                        <td>$24.50</td>
+                    </tr>
+                    <tr>
+                        <td>ANT2 <span class="new-badge">OPT</span></td>
+                        <td>LTE Antenna</td>
+                        <td>Flexible PCB antenna, collar-integrated</td>
+                        <td>1</td>
+                        <td>$3.25</td>
+                    </tr>
+                    <tr>
+                        <td>SIM1 <span class="new-badge">OPT</span></td>
+                        <td>Nano SIM Holder</td>
+                        <td>Push-push connector</td>
+                        <td>1</td>
+                        <td>$0.85</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- FULL BOM -->
+        <div class="section">
+            <h2><i class="fas fa-list-check"></i> COMPLETE BOM — V2 PHOENIX VOICE</h2>
+            
+            <h3>PROCESSING & COMMUNICATION</h3>
+            <table>
+                <thead>
+                    <tr><th>Ref</th><th>Component</th><th>Description</th><th>Qty</th><th>Cost</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>U1</td><td>STM32F405RGT6</td><td>ARM Cortex-M4 @ 168MHz, 64-pin LQFP</td><td>1</td><td>$8.50</td></tr>
+                    <tr><td>U2</td><td>nRF52832</td><td>BLE 5.0 SoC Module</td><td>1</td><td>$4.20</td></tr>
+                    <tr><td>U11</td><td>W25Q128JVSIQ</td><td>16MB SPI Flash Memory</td><td>1</td><td>$2.15</td></tr>
+                    <tr><td>U15 <span class="new-badge">NEW</span></td><td>ESP32-S3-WROOM-1</td><td>Voice AI Co-processor</td><td>1</td><td>$4.20</td></tr>
+                    <tr><td>U16 <span class="new-badge">NEW</span></td><td>W25Q256JVEIQ</td><td>32MB Flash (AI models)</td><td>1</td><td>$4.85</td></tr>
+                </tbody>
+            </table>
+
+            <h3>BIOMETRIC SENSORS (UNCHANGED)</h3>
+            <table>
+                <thead>
+                    <tr><th>Ref</th><th>Component</th><th>Description</th><th>Qty</th><th>Cost</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>U3</td><td>AD8232</td><td>ECG Analog Front-End</td><td>1</td><td>$20.75</td></tr>
+                    <tr><td>U4, U5</td><td>MAX30102</td><td>PPG Heart Rate & SpO2</td><td>2</td><td>$14.30</td></tr>
+                    <tr><td>U6</td><td>MPU-9250</td><td>9-Axis IMU</td><td>1</td><td>$8.50</td></tr>
+                    <tr><td>U7</td><td>AD5933</td><td>Impedance Analyzer (BIA)</td><td>1</td><td>$15.60</td></tr>
+                    <tr><td>TEMP1-4</td><td>DS18B20</td><td>Temperature Sensors</td><td>4</td><td>$15.80</td></tr>
+                    <tr><td>U8</td><td>TCA9548A</td><td>I2C Multiplexer</td><td>1</td><td>$1.50</td></tr>
+                </tbody>
+            </table>
+
+            <h3>VOICE I/O MODULE <span class="new-badge">NEW</span></h3>
+            <table>
+                <thead>
+                    <tr><th>Ref</th><th>Component</th><th>Description</th><th>Qty</th><th>Cost</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>U12</td><td>SPH0645LM4H</td><td>Primary I2S MEMS Microphone</td><td>1</td><td>$2.85</td></tr>
+                    <tr><td>U13</td><td>INMP441</td><td>Secondary Mic (noise cancellation)</td><td>1</td><td>$1.95</td></tr>
+                    <tr><td>SPK1</td><td>Bone Conduction Transducer</td><td>8Ω collar speaker</td><td>1</td><td>$12.50</td></tr>
+                    <tr><td>U14</td><td>MAX98357A</td><td>I2S Audio Amplifier</td><td>1</td><td>$3.45</td></tr>
+                </tbody>
+            </table>
+
+            <h3>POWER SYSTEM (UPGRADED)</h3>
+            <table>
+                <thead>
+                    <tr><th>Ref</th><th>Component</th><th>Description</th><th>Qty</th><th>Cost</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>BAT1</td><td>LiPo Battery</td><td>3.7V <strong>1500mAh</strong> (upgraded)</td><td>1</td><td>$15.50</td></tr>
+                    <tr><td>U9</td><td>BQ24075</td><td>Li-Ion Battery Charger</td><td>1</td><td>$3.25</td></tr>
+                    <tr><td>U10</td><td>TPS63020</td><td>Buck-Boost Converter</td><td>1</td><td>$4.30</td></tr>
+                    <tr><td>SOLAR1-20</td><td>MP3-37</td><td>37mm Solar Cells (3V, 150mW)</td><td>20</td><td>$60.00</td></tr>
+                </tbody>
+            </table>
+
+            <h3>PASSIVES, CONNECTORS, FABRIC</h3>
+            <table>
+                <thead>
+                    <tr><th>Component</th><th>Specification</th><th>Qty</th><th>Cost</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Resistors (0603)</td><td>Various</td><td>~30</td><td>$3.00</td></tr>
+                    <tr><td>Capacitors (0603)</td><td>100nF, 10µF, 22pF</td><td>~35</td><td>$4.25</td></tr>
+                    <tr><td>USB-C Connector</td><td>16-pin SMD</td><td>1</td><td>$1.20</td></tr>
+                    <tr><td>LEDs (0805)</td><td>Green, Blue, Orange</td><td>3</td><td>$0.60</td></tr>
+                    <tr><td>Conductive Thread</td><td>Silver-coated</td><td>25m</td><td>$20.00</td></tr>
+                    <tr><td>Silicone Wire</td><td>28AWG flexible</td><td>6m</td><td>$9.50</td></tr>
+                    <tr><td>Base Garment</td><td>Compression shirt</td><td>1</td><td>$22.00</td></tr>
+                    <tr><td>Conductive Fabric</td><td>Silver-coated nylon</td><td>0.12m²</td><td>$14.50</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- COST SUMMARY -->
+        <div class="section highlight">
+            <h2 class="orange"><i class="fas fa-calculator"></i> COST SUMMARY</h2>
+            <table>
+                <thead>
+                    <tr><th>Category</th><th>V1 Cost</th><th>V2 Cost</th><th>Delta</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Processing & Comms</td><td>$14.85</td><td>$23.90</td><td style="color:#ff6b00">+$9.05</td></tr>
+                    <tr><td>Sensors</td><td>$76.45</td><td>$76.45</td><td>$0</td></tr>
+                    <tr><td>Voice Module</td><td>—</td><td>$20.75</td><td style="color:#ff6b00">+$20.75</td></tr>
+                    <tr><td>Power System</td><td>$80.50</td><td>$83.05</td><td style="color:#ff6b00">+$2.55</td></tr>
+                    <tr><td>Passives & Fabric</td><td>$66.00</td><td>$75.05</td><td style="color:#ff6b00">+$9.05</td></tr>
+                    <tr style="background:rgba(255,107,0,0.1)">
+                        <td><strong>TOTAL</strong></td>
+                        <td><strong>~$127</strong></td>
+                        <td><strong style="color:#ff6b00">~$175</strong></td>
+                        <td><strong style="color:#ff6b00">+$48</strong></td>
+                    </tr>
+                    <tr>
+                        <td>+ LTE Option</td>
+                        <td>—</td>
+                        <td>+$28.60</td>
+                        <td style="color:#ff6b00">~$204 total</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- WIRING SCHEMATIC -->
+        <div class="section">
+            <h2><i class="fas fa-sitemap"></i> UPDATED WIRING SCHEMATIC</h2>
+            
+            <h3>ESP32-S3 PIN CONNECTIONS (VOICE AI)</h3>
+            <table>
+                <thead>
+                    <tr><th>ESP32-S3 Pin</th><th>Connection</th><th>Function</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>GPIO1</td><td>SPH0645 DATA</td><td>I2S Mic Data In</td></tr>
+                    <tr><td>GPIO2</td><td>SPH0645 BCLK</td><td>I2S Bit Clock</td></tr>
+                    <tr><td>GPIO3</td><td>SPH0645 LRCLK</td><td>I2S Word Select</td></tr>
+                    <tr><td>GPIO4</td><td>INMP441 DATA</td><td>Secondary Mic Data</td></tr>
+                    <tr><td>GPIO5</td><td>MAX98357A DIN</td><td>I2S Audio Out</td></tr>
+                    <tr><td>GPIO6</td><td>MAX98357A BCLK</td><td>Audio Bit Clock</td></tr>
+                    <tr><td>GPIO7</td><td>MAX98357A LRCLK</td><td>Audio Word Select</td></tr>
+                    <tr><td>GPIO8</td><td>STM32 PA9</td><td>UART TX (to STM32)</td></tr>
+                    <tr><td>GPIO9</td><td>STM32 PA10</td><td>UART RX (from STM32)</td></tr>
+                    <tr><td>GPIO10</td><td>W25Q256 CS</td><td>AI Model Flash Select</td></tr>
+                    <tr><td>GPIO11</td><td>W25Q256 CLK</td><td>SPI Clock</td></tr>
+                    <tr><td>GPIO12</td><td>W25Q256 MOSI</td><td>SPI Data Out</td></tr>
+                    <tr><td>GPIO13</td><td>W25Q256 MISO</td><td>SPI Data In</td></tr>
+                    <tr><td>GPIO14</td><td>Wake Button</td><td>Manual voice trigger</td></tr>
+                    <tr><td>GPIO15</td><td>Status LED</td><td>Listening indicator</td></tr>
+                </tbody>
+            </table>
+
+            <h3>STM32 ADDITIONAL CONNECTIONS (V2)</h3>
+            <table>
+                <thead>
+                    <tr><th>STM32 Pin</th><th>Connection</th><th>Function</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>PA9 <span class="new-badge">NEW</span></td><td>ESP32 GPIO8</td><td>UART RX from ESP32</td></tr>
+                    <tr><td>PA10 <span class="new-badge">NEW</span></td><td>ESP32 GPIO9</td><td>UART TX to ESP32</td></tr>
+                    <tr><td>PA0</td><td>AD8232 OUT</td><td>ECG ADC Input</td></tr>
+                    <tr><td>PA2</td><td>nRF52 RX</td><td>UART TX (BLE)</td></tr>
+                    <tr><td>PA3</td><td>nRF52 TX</td><td>UART RX (BLE)</td></tr>
+                    <tr><td>PA5</td><td>I2C SCL</td><td>Sensors bus</td></tr>
+                    <tr><td>PA6</td><td>I2C SDA</td><td>Sensors bus</td></tr>
+                    <tr><td>PA8</td><td>DS18B20 ×4</td><td>1-Wire temp sensors</td></tr>
+                </tbody>
+            </table>
+
+            <h3>SYSTEM ARCHITECTURE</h3>
+            <div class="pin-diagram">
+<pre>
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           CONSCIOUS CHIP X — V2                              │
+│                          PHOENIX VOICE EDITION                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌──────────────┐      UART       ┌──────────────┐       I2S        ┌─────┐ │
+│  │  STM32F405   │◄───────────────►│   ESP32-S3   │◄────────────────►│ MIC │ │
+│  │  (Sensors)   │                 │  (Voice AI)  │                  └─────┘ │
+│  └──────┬───────┘                 └──────┬───────┘                          │
+│         │                                │                           ┌─────┐ │
+│         │ I2C                            │ I2S                       │SPEAK│ │
+│         ▼                                ▼                           └──┬──┘ │
+│  ┌──────────────┐                 ┌──────────────┐                      │    │
+│  │   SENSORS    │                 │  MAX98357A   │◄─────────────────────┘    │
+│  │ ECG/PPG/IMU  │                 │  (Audio Amp) │                           │
+│  │ BIA/TEMP     │                 └──────────────┘                           │
+│  └──────────────┘                                                            │
+│         │                                                                    │
+│         │ UART                    ┌──────────────┐                           │
+│         ▼                         │   nRF52832   │────► BLE 5.0 ────► Phone  │
+│  ┌──────────────┐                 │    (BLE)     │      (optional)           │
+│  │   FLASH      │                 └──────────────┘                           │
+│  │  W25Q128     │                                                            │
+│  │  (Sensor     │                 ┌──────────────┐                           │
+│  │   Data)      │                 │   W25Q256    │                           │
+│  └──────────────┘                 │ (AI Models)  │                           │
+│                                   └──────────────┘                           │
+│                                                                              │
+│  ┌──────────────────────────────────────────────────────────────────────┐   │
+│  │                         POWER SYSTEM                                  │   │
+│  │   SOLAR (20×) ──► BQ24075 ──► LiPo 1500mAh ──► TPS63020 ──► 3.3V     │   │
+│  └──────────────────────────────────────────────────────────────────────┘   │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+</pre>
+            </div>
+        </div>
+
+        <!-- VOICE COMMANDS -->
+        <div class="section highlight">
+            <h2 class="orange"><i class="fas fa-microphone"></i> PHOENIX VOICE COMMANDS</h2>
+            
+            <h3>WAKE WORD</h3>
+            <p style="color:#fff; margin-bottom: 1rem;">
+                <code>"Hey Phoenix"</code> or <code>"Phoenix"</code> — processed on-device via ESP32-S3
+            </p>
+
+            <h3>SUPPORTED QUERIES</h3>
+            <table>
+                <thead>
+                    <tr><th>You Say</th><th>Phoenix Responds</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>"How am I doing?"</td><td>Heart rate, zone, calories, pace summary</td></tr>
+                    <tr><td>"What's my heart rate?"</td><td>Current BPM + trend</td></tr>
+                    <tr><td>"Check my oxygen"</td><td>SpO2 percentage</td></tr>
+                    <tr><td>"How's my recovery?"</td><td>HRV analysis + readiness score</td></tr>
+                    <tr><td>"Am I in fat burn?"</td><td>Current heart rate zone + body fat trend</td></tr>
+                    <tr><td>"Battery status"</td><td>Battery %, solar input, estimated runtime</td></tr>
+                    <tr><td>"Start workout"</td><td>Begins tracking, announces intervals</td></tr>
+                    <tr><td>"Lap"</td><td>Records split time, announces pace</td></tr>
+                    <tr><td>"Stop"</td><td>Ends workout, summarizes session</td></tr>
+                </tbody>
+            </table>
+
+            <h3>PROACTIVE ALERTS</h3>
+            <ul>
+                <li>"Heart rate elevated — consider slowing down"</li>
+                <li>"You've hit your target zone — nice work"</li>
+                <li>"Hydration reminder — 30 minutes since last prompt"</li>
+                <li>"Recovery detected — HRV improving"</li>
+                <li>"Battery at 20% — solar charging active"</li>
+            </ul>
+        </div>
+
+        <!-- ASSEMBLY ADDITIONS -->
+        <div class="section">
+            <h2><i class="fas fa-wrench"></i> ASSEMBLY — VOICE MODULE</h2>
+            
+            <h3>STEP 7: VOICE AI INTEGRATION (NEW)</h3>
+            <ol style="margin-left: 1.5rem; color: #fff;">
+                <li style="margin: 1rem 0;">Mount ESP32-S3 module on secondary PCB area</li>
+                <li style="margin: 1rem 0;">Connect ESP32 to STM32 via UART (PA9/PA10)</li>
+                <li style="margin: 1rem 0;">Wire I2S microphones:
+                    <ul>
+                        <li>SPH0645 primary mic → collar area (facing mouth)</li>
+                        <li>INMP441 secondary → opposite side (noise reference)</li>
+                    </ul>
+                </li>
+                <li style="margin: 1rem 0;">Install bone conduction transducer at collar, skin-contact side</li>
+                <li style="margin: 1rem 0;">Connect MAX98357A amplifier between ESP32 and transducer</li>
+                <li style="margin: 1rem 0;">Flash ESP32 with Phoenix Voice firmware via USB</li>
+                <li style="margin: 1rem 0;">Load wake word model + response templates to W25Q256</li>
+                <li style="margin: 1rem 0;">Test voice activation: "Hey Phoenix" → "I'm listening"</li>
+            </ol>
+
+            <h3>MIC PLACEMENT</h3>
+            <div class="callout">
+                <p><strong>PRIMARY MIC:</strong> Inside collar, ~2cm from edge, facing upward toward mouth. 
+                Protected by acoustic mesh fabric.</p>
+                <p style="margin-top: 0.5rem;"><strong>SECONDARY MIC:</strong> Opposite collar side, facing outward. 
+                Captures ambient noise for cancellation.</p>
+            </div>
+
+            <h3>BONE CONDUCTION PLACEMENT</h3>
+            <div class="callout">
+                <p>Mount transducer at collar base, positioned to contact mastoid bone area behind ear 
+                when collar sits naturally. Silicone pad ensures skin contact and comfort.</p>
+            </div>
+        </div>
+
+        <!-- POWER BUDGET -->
+        <div class="section">
+            <h2><i class="fas fa-battery-full"></i> POWER BUDGET — V2</h2>
+            <table>
+                <thead>
+                    <tr><th>Component</th><th>Active (mA)</th><th>Sleep (µA)</th><th>Duty Cycle</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>STM32F405</td><td>40</td><td>2</td><td>10% active</td></tr>
+                    <tr><td>nRF52832</td><td>8</td><td>1.5</td><td>5% active</td></tr>
+                    <tr><td>ESP32-S3 (listening)</td><td>95</td><td>10</td><td>15% active</td></tr>
+                    <tr><td>ESP32-S3 (speaking)</td><td>180</td><td>—</td><td>2% active</td></tr>
+                    <tr><td>Sensors (aggregate)</td><td>25</td><td>5</td><td>20% active</td></tr>
+                    <tr><td>Audio Amp</td><td>120</td><td>0</td><td>2% active</td></tr>
+                    <tr style="background:rgba(0,255,255,0.1)">
+                        <td><strong>AVERAGE DRAW</strong></td>
+                        <td colspan="3"><strong>~35mA continuous</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>RUNTIME ESTIMATES</h3>
+            <table>
+                <thead>
+                    <tr><th>Condition</th><th>Runtime (1500mAh)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Heavy voice use (30+ queries/hour)</td><td>~24 hours</td></tr>
+                    <tr><td>Normal use (5-10 queries/hour)</td><td>~40 hours</td></tr>
+                    <tr><td>Passive monitoring (no voice)</td><td>~72 hours</td></tr>
+                    <tr><td>+ Solar supplement (outdoor)</td><td>Indefinite*</td></tr>
+                </tbody>
+            </table>
+            <p style="color:#888; font-size: 0.8rem; margin-top: 0.5rem;">
+                *With 3+ hours direct sunlight, solar input exceeds average consumption
+            </p>
+        </div>
+
+        <!-- FIRMWARE -->
+        <div class="section">
+            <h2><i class="fas fa-code"></i> FIRMWARE ARCHITECTURE</h2>
+            
+            <h3>ESP32-S3 — VOICE AI</h3>
+            <ul>
+                <li><strong>Wake Word Engine:</strong> ESP-SR (Espressif) or custom TinyML model</li>
+                <li><strong>Speech Recognition:</strong> On-device command matching (50+ phrases)</li>
+                <li><strong>TTS Engine:</strong> Pre-recorded response fragments, dynamically assembled</li>
+                <li><strong>Noise Cancellation:</strong> Dual-mic beamforming, adaptive filtering</li>
+            </ul>
+
+            <h3>STM32F405 — BIOMETRICS</h3>
+            <ul>
+                <li>Unchanged from V1 — sensor sampling, data fusion, BLE transmission</li>
+                <li>New: UART bridge to ESP32 for voice query responses</li>
+            </ul>
+
+            <h3>COMMUNICATION FLOW</h3>
+            <div class="pin-diagram">
+<pre>
+User: "Hey Phoenix, what's my heart rate?"
+              │
+              ▼
+   ┌─────────────────────┐
+   │  ESP32-S3 wakes up  │  (Wake word detected)
+   │  Records 3s audio   │
+   │  Runs command match │
+   └──────────┬──────────┘
+              │ UART: CMD_HEART_RATE
+              ▼
+   ┌─────────────────────┐
+   │     STM32F405       │  (Retrieves latest HR from MAX30102)
+   │  Returns: "142 BPM" │
+   └──────────┬──────────┘
+              │ UART: RESP_142_BPM
+              ▼
+   ┌─────────────────────┐
+   │  ESP32-S3 assembles │  ("Your heart rate is" + "142" + "BPM")
+   │  Plays via I2S amp  │
+   └─────────────────────┘
+              │
+              ▼
+User hears: "Your heart rate is 142 BPM"
+</pre>
+            </div>
+        </div>
+
+        <!-- PATENT NOTE -->
+        <div class="section highlight">
+            <h2 class="orange"><i class="fas fa-gavel"></i> PATENT STRATEGY</h2>
+            <p style="color:#fff;">
+                The Phoenix Voice Edition introduces patentable innovations beyond the original filing:
+            </p>
+            <ul style="margin-top: 1rem;">
+                <li><strong>Claim: Voice-interactive biometric garment</strong> — Wearable clothing with embedded voice assistant providing real-time biometric feedback</li>
+                <li><strong>Claim: Bone conduction audio in smart apparel</strong> — Private audio output integrated into garment collar</li>
+                <li><strong>Claim: Solar-powered voice AI wearable</strong> — Energy-harvesting garment with on-device AI processing</li>
+            </ul>
+            <div class="callout" style="margin-top: 1.5rem;">
+                <p><strong>RECOMMENDATION:</strong> File continuation-in-part (CIP) patent before Sept 2026 deadline 
+                to capture voice AI claims while maintaining priority date of original filing (#63/889,364).</p>
+            </div>
+        </div>
+
+        <!-- MODULE DIMENSIONS -->
+        <div class="section">
+            <h2><i class="fas fa-ruler-combined"></i> PHYSICAL SPECIFICATIONS</h2>
+            <table>
+                <thead>
+                    <tr><th>Metric</th><th>V1</th><th>V2</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Chip Module Size</td><td>42 × 72 × 13 mm</td><td>48 × 78 × 15 mm</td></tr>
+                    <tr><td>Module Weight</td><td>~45g</td><td>~58g</td></tr>
+                    <tr><td>Additional Components</td><td>—</td><td>Collar mic pod (12 × 8 × 5 mm), Bone transducer (18 × 12 × 4 mm)</td></tr>
+                    <tr><td>Total Added Weight</td><td>—</td><td>+18g</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="footer">
+            CONSCIOUS CLOTHES — PHOENIX VOICE EDITION<br>
+            Patent #63/889,364 + CIP Pending<br>
+            Digital Apple Inc. — Confidential<br>
+            Document generated: December 2025
+        </footer>
+    </div>
+</body>
+</html>
