@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill of Materials - Conscious Clothes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #164e63 0%, #06b6d4 50%, #083344 100%);
+            color: #cffafe;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(8, 51, 68, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            padding: 3rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #06b6d4;
+            margin-bottom: 1rem;
+        }
+
+        .nav {
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav a {
+            color: #06b6d4;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #67e8f9;
+        }
+
+        .download-btn {
+            background: rgba(6, 182, 212, 0.2);
+            border: 1px solid #06b6d4;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .download-btn:hover {
+            background: #06b6d4;
+            color: #083344;
+        }
+
+        .content {
+            padding: 3rem 2rem;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .summary-card {
+            background: rgba(6, 182, 212, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 3px solid #06b6d4;
+        }
+
+        .summary-card h3 {
+            color: #06b6d4;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #cffafe;
+        }
+
+        h2 {
+            color: #06b6d4;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(6, 182, 212, 0.3);
+        }
+
+        table {
+            width: 100%;
+            margin: 1rem 0 2rem;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table th,
+        table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        table th {
+            background: rgba(6, 182, 212, 0.2);
+            color: #06b6d4;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        table tr:hover {
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        .category-header {
+            background: rgba(6, 182, 212, 0.15) !important;
+            font-weight: bold;
+            color: #67e8f9 !important;
+        }
+
+        .note {
+            background: rgba(234, 179, 8, 0.1);
+            border-left: 3px solid #eab308;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            color: #fef3c7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-list-check"></i> Bill of Materials</h1>
+            <p style="color: #a5f3fc;">Conscious Clothes Smart Garment System</p>
+        </header>
+
+        <nav class="nav">
+            <a href="./index.html">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+            <a href="./conscious_clothes_bom.xlsx" download class="download-btn">
+                <i class="fas fa-download"></i>
+                Download Excel File
+            </a>
+        </nav>
+
+        <div class="content">
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3><i class="fas fa-microchip"></i> Total Components</h3>
+                    <div class="value">150+</div>
+                </div>
+                <div class="summary-card">
+                    <h3><i class="fas fa-dollar-sign"></i> Estimated Cost</h3>
+                    <div class="value">$245</div>
+                </div>
+                <div class="summary-card">
+                    <h3><i class="fas fa-boxes-stacked"></i> Main ICs</h3>
+                    <div class="value">11</div>
+                </div>
+                <div class="summary-card">
+                    <h3><i class="fas fa-plug"></i> Sensors</h3>
+                    <div class="value">34</div>
+                </div>
+            </div>
+
+            <h2><i class="fas fa-microchip"></i> Main Components</h2>
+
+            <h3 style="color: #67e8f9; margin: 1.5rem 0 0.75rem;">Processing & Communication</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reference</th>
+                        <th>Component</th>
+                        <th>Description</th>
+                        <th>Qty</th>
+                        <th>Est. Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>U1</td>
+                        <td>STM32F405RGT6</td>
+                        <td>ARM Cortex-M4 @ 168MHz, 64-pin LQFP</td>
+                        <td>1</td>
+                        <td>$8.50</td>
+                    </tr>
+                    <tr>
+                        <td>U2</td>
+                        <td>nRF52832</td>
+                        <td>BLE 5.0 SoC Module (BM832)</td>
+                        <td>1</td>
+                        <td>$4.20</td>
+                    </tr>
+                    <tr>
+                        <td>U11</td>
+                        <td>W25Q128JVSIQ</td>
+                        <td>16MB SPI Flash Memory</td>
+                        <td>1</td>
+                        <td>$2.15</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: #67e8f9; margin: 1.5rem 0 0.75rem;">Sensors</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reference</th>
+                        <th>Component</th>
+                        <th>Description</th>
+                        <th>Qty</th>
+                        <th>Est. Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>U3</td>
+                        <td>AD8232</td>
+                        <td>ECG Analog Front-End Module</td>
+                        <td>1</td>
+                        <td>$20.75</td>
+                    </tr>
+                    <tr>
+                        <td>U4, U5</td>
+                        <td>MAX30102</td>
+                        <td>PPG Heart Rate & SpO2 Sensor</td>
+                        <td>2</td>
+                        <td>$14.30</td>
+                    </tr>
+                    <tr>
+                        <td>U6</td>
+                        <td>MPU-9250</td>
+                        <td>9-Axis IMU (Accel, Gyro, Mag)</td>
+                        <td>1</td>
+                        <td>$8.50</td>
+                    </tr>
+                    <tr>
+                        <td>U7</td>
+                        <td>AD5933</td>
+                        <td>Impedance Analyzer (BIA)</td>
+                        <td>1</td>
+                        <td>$15.60</td>
+                    </tr>
+                    <tr>
+                        <td>TEMP1-4</td>
+                        <td>DS18B20</td>
+                        <td>1-Wire Digital Temperature Sensor</td>
+                        <td>4</td>
+                        <td>$15.80</td>
+                    </tr>
+                    <tr>
+                        <td>U8</td>
+                        <td>TCA9548A</td>
+                        <td>I2C Multiplexer (8-Channel)</td>
+                        <td>1</td>
+                        <td>$1.50</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: #67e8f9; margin: 1.5rem 0 0.75rem;">Power System</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reference</th>
+                        <th>Component</th>
+                        <th>Description</th>
+                        <th>Qty</th>
+                        <th>Est. Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BAT1</td>
+                        <td>LiPo Battery</td>
+                        <td>3.7V 1000mAh Rechargeable</td>
+                        <td>1</td>
+                        <td>$12.95</td>
+                    </tr>
+                    <tr>
+                        <td>U9</td>
+                        <td>BQ24075</td>
+                        <td>Li-Ion Battery Charger IC</td>
+                        <td>1</td>
+                        <td>$3.25</td>
+                    </tr>
+                    <tr>
+                        <td>U10</td>
+                        <td>TPS63020</td>
+                        <td>Buck-Boost Converter</td>
+                        <td>1</td>
+                        <td>$4.30</td>
+                    </tr>
+                    <tr>
+                        <td>SOLAR1-20</td>
+                        <td>MP3-37</td>
+                        <td>37mm Solar Cell (3V, 150mW)</td>
+                        <td>20</td>
+                        <td>$60.00</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: #67e8f9; margin: 1.5rem 0 0.75rem;">Passives & Connectors</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Specification</th>
+                        <th>Qty</th>
+                        <th>Est. Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Resistors (0603)</td>
+                        <td>Various (10kΩ, 4.7kΩ, 1kΩ)</td>
+                        <td>~25</td>
+                        <td>$2.50</td>
+                    </tr>
+                    <tr>
+                        <td>Capacitors (0603)</td>
+                        <td>100nF, 10µF, 22pF</td>
+                        <td>~30</td>
+                        <td>$3.75</td>
+                    </tr>
+                    <tr>
+                        <td>USB-C Connector</td>
+                        <td>16-pin SMD</td>
+                        <td>1</td>
+                        <td>$1.20</td>
+                    </tr>
+                    <tr>
+                        <td>Slide Switch</td>
+                        <td>SPDT, 0.5A</td>
+                        <td>1</td>
+                        <td>$0.85</td>
+                    </tr>
+                    <tr>
+                        <td>LEDs (0805)</td>
+                        <td>Green, Blue</td>
+                        <td>2</td>
+                        <td>$0.40</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="color: #67e8f9; margin: 1.5rem 0 0.75rem;">Fabric & Materials</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Specification</th>
+                        <th>Qty</th>
+                        <th>Est. Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Conductive Thread</td>
+                        <td>Silver-coated, 0.5Ω/cm</td>
+                        <td>23m spool</td>
+                        <td>$18.50</td>
+                    </tr>
+                    <tr>
+                        <td>Silicone Wire</td>
+                        <td>28AWG, flexible</td>
+                        <td>5m (5 colors)</td>
+                        <td>$8.25</td>
+                    </tr>
+                    <tr>
+                        <td>Base Garment</td>
+                        <td>Compression shirt (73% Polyamide, 27% Elastane)</td>
+                        <td>1</td>
+                        <td>$22.00</td>
+                    </tr>
+                    <tr>
+                        <td>Conductive Fabric</td>
+                        <td>Silver-coated nylon</td>
+                        <td>0.1m²</td>
+                        <td>$12.50</td>
+                    </tr>
+                    <tr>
+                        <td>Heat Shrink Tubing</td>
+                        <td>Assorted sizes</td>
+                        <td>1 set</td>
+                        <td>$4.75</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <h3 style="color: #fbbf24; margin-bottom: 0.75rem;"><i class="fas fa-info-circle"></i> Notes</h3>
+                <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                    <li>Prices are estimates and may vary by supplier</li>
+                    <li>Some components come in minimum order quantities</li>
+                    <li>PCB fabrication cost not included (~$20-40 for prototype)</li>
+                    <li>Assembly labor/tools not factored into cost</li>
+                    <li>Complete detailed BOM available in Excel file (download above)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Billion Dollar Ecosystem - Conscious Clothes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,7 +14,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #164e63 0%, #06b6d4 50%, #083344 100%);
             color: #fff;
             min-height: 100vh;
             display: flex;
@@ -21,169 +22,298 @@
         }
 
         header {
-            padding: 2rem;
+            padding: 3rem 2rem;
             text-align: center;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.3);
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            color: #06b6d4;
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             opacity: 0.9;
+            color: #67e8f9;
         }
 
         main {
             flex: 1;
-            padding: 2rem;
-            max-width: 1200px;
+            padding: 3rem 2rem;
+            max-width: 1400px;
             margin: 0 auto;
             width: 100%;
         }
 
+        .intro {
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .intro p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            color: #cffafe;
+        }
+
         .files-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
             margin-top: 2rem;
         }
 
         .file-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(8, 51, 68, 0.6);
             backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .file-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #06b6d4, #0891b2);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .file-card:hover::before {
+            transform: scaleX(1);
         }
 
         .file-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.3);
+            border-color: #06b6d4;
+            background: rgba(8, 51, 68, 0.8);
+        }
+
+        .file-card.featured {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(8, 145, 178, 0.3));
+            border: 2px solid rgba(6, 182, 212, 0.5);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1rem;
+            color: #06b6d4;
         }
 
         .file-card h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+            color: #cffafe;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .file-card.featured h3 {
+            font-size: 2rem;
         }
 
         .file-card p {
-            opacity: 0.8;
-            margin-bottom: 1rem;
-            line-height: 1.6;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: #a5f3fc;
         }
 
         .file-card a {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
-            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(6, 182, 212, 0.2);
+            border: 1px solid #06b6d4;
+            border-radius: 8px;
+            color: #cffafe;
             text-decoration: none;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            font-weight: 500;
         }
 
         .file-card a:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: #06b6d4;
+            color: #083344;
+            transform: translateX(4px);
+        }
+
+        .specs-section {
+            max-width: 900px;
+            margin: 4rem auto 0;
+            padding: 2.5rem;
+            background: rgba(8, 51, 68, 0.6);
+            border-radius: 16px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .specs-section h3 {
+            margin: 0 0 2rem;
+            font-size: 1.8rem;
+            color: #06b6d4;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .spec-item {
+            padding: 1.5rem;
+            background: rgba(6, 182, 212, 0.1);
+            border-radius: 12px;
+            border-left: 3px solid #06b6d4;
+        }
+
+        .spec-label {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            color: #a5f3fc;
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #cffafe;
         }
 
         footer {
             text-align: center;
             padding: 2rem;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(6, 182, 212, 0.3);
         }
 
         .phoenix-badge {
             display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
+            padding: 0.75rem 1.5rem;
+            background: rgba(6, 182, 212, 0.2);
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            border-radius: 25px;
             margin-top: 1rem;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            color: #a5f3fc;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>🔥 Billion Dollar Ecosystem</h1>
+        <h1>Billion Dollar Ecosystem</h1>
         <p class="subtitle">Conscious Clothes - Revolutionary Smart Clothing System</p>
     </header>
 
     <main>
-        <div style="max-width: 1000px; margin: 0 auto 2rem; text-align: center;">
-            <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.95;">
+        <div class="intro">
+            <p>
                 Revolutionary smart clothing system that integrates AI consciousness, real-time biometric monitoring,
                 and solar-powered sensors into wearable fabric technology. Part of the Phoenix ecosystem.
             </p>
         </div>
 
         <div class="files-grid">
-            <div class="file-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2)); border: 2px solid rgba(59, 130, 246, 0.5);">
-                <h3 style="font-size: 1.8rem;">🗺️ Interactive Blueprint</h3>
-                <p style="font-size: 1.1rem;">Explore the complete technical specifications, sensor layouts, and system architecture.</p>
-                <a href="./conscious_clothes_blueprint.html" style="background: rgba(59, 130, 246, 0.8); font-size: 1.1rem; padding: 0.75rem 1.5rem;">Launch Blueprint →</a>
+            <div class="file-card featured">
+                <i class="fas fa-diagram-project card-icon" style="width: 64px; height: 64px; font-size: 64px;"></i>
+                <h3>Interactive Blueprint</h3>
+                <p style="font-size: 1.15rem;">Explore the complete technical specifications, sensor layouts, and system architecture.</p>
+                <a href="./conscious_clothes_blueprint.html">
+                    <i class="fas fa-arrow-right"></i>
+                    Launch Blueprint
+                </a>
             </div>
 
             <div class="file-card">
-                <h3>📋 Assembly Guide</h3>
+                <i class="fas fa-book card-icon"></i>
+                <h3>Assembly Guide</h3>
                 <p>Complete instructions for assembling the smart clothing system with integrated health monitoring.</p>
-                <a href="./conscious_clothes_assembly_guide.jsx" download>Download JSX</a>
+                <a href="./assembly_guide.html">
+                    <i class="fas fa-eye"></i>
+                    View Guide
+                </a>
             </div>
 
             <div class="file-card">
-                <h3>⚡ Blueprint (JSX)</h3>
-                <p>React component version of the blueprint for integration into web applications.</p>
-                <a href="./conscious_clothes_blueprint.jsx" download>Download JSX</a>
+                <i class="fas fa-microchip card-icon"></i>
+                <h3>Technical Schematics</h3>
+                <p>Detailed wiring diagrams and electrical schematics for all sensor integrations.</p>
+                <a href="./schematic.html">
+                    <i class="fas fa-eye"></i>
+                    View Schematics
+                </a>
             </div>
 
             <div class="file-card">
-                <h3>📊 Bill of Materials</h3>
+                <i class="fas fa-list-check card-icon"></i>
+                <h3>Bill of Materials</h3>
                 <p>Complete BOM with all components, specifications, and sourcing information.</p>
-                <a href="./conscious_clothes_bom.xlsx" download>Download XLSX</a>
+                <a href="./bom.html">
+                    <i class="fas fa-eye"></i>
+                    View BOM
+                </a>
             </div>
 
             <div class="file-card">
-                <h3>🔧 Schematics</h3>
-                <p>Technical schematics showing the electrical and sensor integration details.</p>
-                <a href="./conscious_clothes_schematic.jsx" download>Download JSX</a>
-            </div>
-
-            <div class="file-card">
-                <h3>📱 iOS Build Report</h3>
+                <i class="fab fa-apple card-icon"></i>
+                <h3>iOS Build Report</h3>
                 <p>Phoenix iOS integration build report and deployment documentation.</p>
-                <a href="./PHOENIX_IOS_BUILD_REPORT.md" download>View Report</a>
+                <a href="./ios_build_report.html">
+                    <i class="fas fa-eye"></i>
+                    View Report
+                </a>
             </div>
         </div>
 
-        <div style="max-width: 800px; margin: 3rem auto 0; padding: 2rem; background: rgba(0, 0, 0, 0.2); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-            <h3 style="margin: 0 0 1rem; font-size: 1.5rem;">📐 Technical Specifications</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: left;">
-                <div>
-                    <div style="opacity: 0.7; font-size: 0.9rem;">Sensors</div>
-                    <div style="font-size: 1.3rem; font-weight: bold;">34 Medical-Grade</div>
+        <div class="specs-section">
+            <h3>
+                <i class="fas fa-gauge-high"></i>
+                Technical Specifications
+            </h3>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-label">Sensors</div>
+                    <div class="spec-value">34 Medical-Grade</div>
                 </div>
-                <div>
-                    <div style="opacity: 0.7; font-size: 0.9rem;">Solar Power</div>
-                    <div style="font-size: 1.3rem; font-weight: bold;">3W Peak</div>
+                <div class="spec-item">
+                    <div class="spec-label">Solar Power</div>
+                    <div class="spec-value">3W Peak</div>
                 </div>
-                <div>
-                    <div style="opacity: 0.7; font-size: 0.9rem;">Battery Life</div>
-                    <div style="font-size: 1.3rem; font-weight: bold;">100+ Days</div>
+                <div class="spec-item">
+                    <div class="spec-label">Battery Life</div>
+                    <div class="spec-value">100+ Days</div>
                 </div>
-                <div>
-                    <div style="opacity: 0.7; font-size: 0.9rem;">Connectivity</div>
-                    <div style="font-size: 1.3rem; font-weight: bold;">BLE 5.0</div>
+                <div class="spec-item">
+                    <div class="spec-label">Connectivity</div>
+                    <div class="spec-value">BLE 5.0</div>
                 </div>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>Part of the Phoenix Ecosystem</p>
+        <p style="color: #a5f3fc;">Part of the Phoenix Ecosystem</p>
         <div class="phoenix-badge">Mirroring Life Through Technology</div>
     </footer>
 </body>
